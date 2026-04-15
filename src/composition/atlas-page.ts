@@ -25,6 +25,10 @@ import { createRDField, simulateRD, drawRDField, RD_PRESETS } from '../engine/re
 import { generateBranching, drawBranching } from '../engine/branching';
 import { generateContours, drawContours } from '../engine/contours';
 import { drawGhostText, drawSubSurface, drawEruption, drawVignette } from '../engine/depth';
+import {
+  drawHatchingField, drawMicroAnnotations, drawRuledLines,
+  drawDenseFill, drawObsessiveNumbering, drawConnectionWeb,
+} from '../engine/dense-detail';
 
 export interface AtlasPageConfig {
   width: number;
@@ -150,6 +154,9 @@ export function renderAtlasPage(
   ctx.fillStyle = '#000';
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
+
+  // LAYER -1: Ruled lines — faint underlying structure like graph paper
+  drawRuledLines(ctx, width, height, seed + 5);
 
   // LAYER 0: Sub-surface
   drawSubSurface(ctx, width, height, seed + 10);
@@ -416,9 +423,44 @@ export function renderAtlasPage(
     }
   }
 
+  // LAYER 12.5: Hatching fields — dense shading in random regions
+  const numHatchFields = 2 + Math.floor(rng() * 4);
+  for (let h = 0; h < numHatchFields; h++) {
+    const hx = width * (rng() * 0.7);
+    const hy = height * (rng() * 0.7);
+    const hw = width * (0.1 + rng() * 0.25);
+    const hh = height * (0.1 + rng() * 0.25);
+    const hAngle = rng() * Math.PI;
+    const hSpacing = 2 + rng() * 4;
+    drawHatchingField(ctx, hx, hy, hw, hh, hAngle, hSpacing, 0.06 + rng() * 0.1, seed + 750 + h, rng() > 0.4);
+  }
+
+  // LAYER 12.6: Dense fill regions — obsessive filling of empty areas
+  const numDenseFills = 1 + Math.floor(rng() * 3 + entropy * 2);
+  for (let df = 0; df < numDenseFills; df++) {
+    const dfx = width * (0.1 + rng() * 0.8);
+    const dfy = height * (0.1 + rng() * 0.8);
+    const dfr = 20 + rng() * 60;
+    const fillTypes: Array<'dots' | 'lines' | 'crosses' | 'mixed'> = ['dots', 'lines', 'crosses', 'mixed'];
+    drawDenseFill(ctx, dfx, dfy, dfr, seed + 760 + df, fillTypes[Math.floor(rng() * fillTypes.length)]);
+  }
+
+  // LAYER 12.7: Connection web — conspiracy board strings
+  drawConnectionWeb(ctx, width, height, 8 + Math.floor(rng() * 15 + entropy * 10), seed + 770);
+
+  // LAYER 12.8: Micro-annotations — tiny labels, arrows, brackets EVERYWHERE
+  const allAnnotationFragments = [...fragments, ...fragments2, ...theme.fragments.slice(0, 8), ...theme2.fragments.slice(0, 6)];
+  drawMicroAnnotations(ctx, width, height, 20 + Math.floor(rng() * 40 + entropy * 30), seed + 780, allAnnotationFragments);
+
+  // LAYER 12.9: Obsessive numbering along edges
+  drawObsessiveNumbering(ctx, width, height, seed + 790);
+
   // LAYER 13: Recurring symbol + mantra — theme-aware symbol
   scatterRecurringSymbol(ctx, width, height, 60 + Math.floor(rng() * 80 + entropy * 80), seed + 800, vp.symbolType);
   drawMantricRepetition(ctx, theme.mantras[0], width, height, seed + 810);
+
+  // LAYER 13.5: Second marginalia pass — more text along edges
+  drawMarginalia(ctx, scripts, width, height, seed + 815);
 
   // LAYER 14: Edge details + vignette
   drawEdgeDetails(ctx, width, height, seed, rng);
