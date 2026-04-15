@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useCallback, useEffect } from 'react';
 import type { JournalEntry } from './entries';
 
-const ENTRIES_PER_PAGE = 3;
+const ENTRIES_PER_PAGE = 1;
 
 interface BookViewerProps {
   entries: JournalEntry[];
@@ -136,12 +136,6 @@ export default function BookViewer({ entries }: BookViewerProps) {
               })}
             </div>
 
-            {/* Separator between entries on same page */}
-            {i < currentEntries.length - 1 && (
-              <div className="mt-20 flex justify-center">
-                <div className="w-8 h-px bg-neutral-800" />
-              </div>
-            )}
 
           </article>
         ))}
@@ -207,7 +201,7 @@ function NavControls({
           className="px-6 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
             transition-all tracking-[0.3em] uppercase text-[10px]"
         >
-          Random page
+          Random entry
         </button>
 
         <button
