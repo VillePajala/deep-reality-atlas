@@ -18,6 +18,7 @@ export interface TaxonomyGridConfig {
   warpFactor: number;      // How much the grid warps (0 = perfect, 1 = very warped)
   breakdownStart: number;  // Row where breakdown begins (0-1 normalized)
   seed: number;
+  cellStyle?: string;      // Theme-driven cell drawing style
 }
 
 interface SeededRng {
@@ -99,7 +100,7 @@ export function drawTaxonomyGrid(
 
       ctx.fillStyle = '#000';
       ctx.strokeStyle = '#000';
-      drawCellOrganism(ctx, centerX, centerY, radius, cellIndex + config.seed, rng);
+      drawCellOrganism(ctx, centerX, centerY, radius, cellIndex + config.seed, rng, config.cellStyle);
 
       // Cell number annotation (pseudo-scientific label)
       if (actualSize > 15) {

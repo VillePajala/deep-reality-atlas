@@ -17,6 +17,7 @@ import { drawTaxonomyGrid, drawCrossReferences } from '../engine/taxonomy-grid';
 import { drawVoid, VoidConfig } from '../engine/void';
 import { createScriptSystem, writeTextBlock, drawMarginalia, writeText } from '../engine/pseudo-script';
 import { drawGeometryFragments, scatterRecurringSymbol } from '../engine/sacred-geometry';
+import { getVisualProfile } from '../themes/visual-profiles';
 import { stippleGradient, stippleRegion } from '../engine/stippling';
 import { selectThemes, pickFragments, pickQuote } from '../engine/corpus';
 import { createRDField, simulateRD, drawRDField, RD_PRESETS } from '../engine/reaction-diffusion';
@@ -90,6 +91,10 @@ export function renderAtlasPage(
   const longQuote = pickQuote(theme, seed);
   const scripts = createScriptSystem(seed);
 
+  // Get visual profile for the primary theme
+  const vp = getVisualProfile(theme.id);
+  const lw = vp.layerWeights;
+
   // ═══════════════════════════════════════════════════════
   // LAYOUT SYSTEM — randomize WHERE everything goes
   // ═══════════════════════════════════════════════════════
@@ -111,14 +116,14 @@ export function renderAtlasPage(
   const maxGridH = height * (0.25 + rng() * 0.25);
   const cellSize = Math.min(maxGridW / gridCols, maxGridH / gridRows);
 
-  // Void size varies
-  const voidRadius = Math.min(width, height) * (0.1 + rng() * 0.2 + entropy * 0.2);
+  // Void size varies — scaled by theme
+  const voidRadius = Math.min(width, height) * (0.1 + rng() * 0.2 + entropy * 0.2) * lw.voidSize;
 
   // Flow field direction varies
   const flowAngleOffset = rng() * 100;
 
-  // How many branching networks (0-3)
-  const numNetworks = Math.floor(rng() * 3) + 1;
+  // How many branching networks (0-3) — scaled by theme
+  const numNetworks = Math.max(1, Math.floor((Math.floor(rng() * 3) + 1) * lw.branchingDensity));
 
   // Whether to have eruptions (not just entropy-dependent)
   const hasEruptions = rng() > 0.4;
@@ -166,7 +171,7 @@ export function renderAtlasPage(
   const contourLevels = generateContours(
     contourRegionX, contourRegionY,
     width * (0.5 + rng() * 0.5), height * (0.5 + rng() * 0.5),
-    20, 8 + Math.floor(entropy * 8 + rng() * 5),
+    20, Math.floor((8 + Math.floor(entropy * 8 + rng() * 5)) * lw.contourDensity),
     0.002 + rng() * 0.004,
     seed + 30
   );
@@ -174,7 +179,7 @@ export function renderAtlasPage(
 
   // LAYER 3: Reaction-diffusion — random placement
   const presetKeys = Object.keys(RD_PRESETS) as (keyof typeof RD_PRESETS)[];
-  const numRDPatches = 1 + Math.floor(rng() * 3);
+  const numRDPatches = Math.max(0, Math.floor((1 + Math.floor(rng() * 3)) * lw.reactionDiffusion));
   for (let i = 0; i < numRDPatches; i++) {
     const rdPreset = RD_PRESETS[presetKeys[Math.floor(rng() * presetKeys.length)]];
     const rdSize = 30 + Math.floor(rng() * 30);
@@ -221,12 +226,13 @@ export function renderAtlasPage(
     drawVoid(ctx, void2, width, height, 4);
   }
 
-  // LAYER 5: Sacred geometry — scattered across random region
+  // LAYER 5: Sacred geometry — scattered across random region, theme-aware
   drawGeometryFragments(ctx,
     width * rng() * 0.3, height * rng() * 0.3,
     width * (0.4 + rng() * 0.5), height * (0.4 + rng() * 0.5),
     0.3 + entropy * 0.8 + rng() * 0.3,
-    seed + 200
+    seed + 200,
+    vp.geometryShapes
   );
 
   // LAYER 6: Branching networks — random roots and bounds
@@ -254,7 +260,7 @@ export function renderAtlasPage(
     width, height,
     resolution: 15,
     noiseScale: 0.008 + rng() * 0.025 + entropy * 0.015,
-    turbulence: 1.5 + rng() * 3 + entropy * 4,
+    turbulence: (1.5 + rng() * 3 + entropy * 4) * lw.flowFieldTurbulence,
     offsetX: flowAngleOffset,
     offsetY: flowAngleOffset * 1.7,
     octaves: 3 + Math.floor(rng() * 3),
@@ -291,6 +297,7 @@ export function renderAtlasPage(
     warpFactor: entropy * (0.8 + rng() * 0.8),
     breakdownStart: 0.3 + rng() * 0.4 - entropy * 0.2,
     seed: seed + 300,
+    cellStyle: vp.cellStyle,
   });
 
   drawCrossReferences(ctx, {
@@ -322,8 +329,8 @@ export function renderAtlasPage(
   }
   drawMarginalia(ctx, scripts, width, height, seed + 500);
 
-  // LAYER 11: Stipple zones — random placement
-  const numStippleZones = 2 + Math.floor(rng() * 4);
+  // LAYER 11: Stipple zones — random placement, scaled by theme
+  const numStippleZones = Math.max(1, Math.floor((2 + Math.floor(rng() * 4)) * lw.stippleDensity));
   for (let i = 0; i < numStippleZones; i++) {
     const dir = (['horizontal', 'vertical', 'radial'] as const)[Math.floor(rng() * 3)];
     stippleGradient(ctx,
@@ -359,8 +366,8 @@ export function renderAtlasPage(
     }
   }
 
-  // LAYER 13: Recurring symbol + mantra
-  scatterRecurringSymbol(ctx, width, height, 30 + Math.floor(rng() * 40 + entropy * 40), seed + 800);
+  // LAYER 13: Recurring symbol + mantra — theme-aware symbol
+  scatterRecurringSymbol(ctx, width, height, 30 + Math.floor(rng() * 40 + entropy * 40), seed + 800, vp.symbolType);
   drawMantricRepetition(ctx, theme.mantras[0], width, height, seed + 810);
 
   // LAYER 14: Edge details + vignette

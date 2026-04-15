@@ -152,8 +152,8 @@ export function computeVoronoiCells(
 }
 
 /**
- * Draw a single organic form inside a cell — the "specimen" in the taxonomy.
- * Each cell contains a slightly different organism.
+ * Draw a single form inside a taxonomy cell.
+ * Style is determined by the theme's visual profile.
  */
 export function drawCellOrganism(
   ctx: CanvasRenderingContext2D,
@@ -161,7 +161,22 @@ export function drawCellOrganism(
   cy: number,
   radius: number,
   seed: number,
-  rng: () => number
+  rng: () => number,
+  style: string = 'organic'
+): void {
+  switch (style) {
+    case 'geometric': drawGeometricCell(ctx, cx, cy, radius, seed, rng); break;
+    case 'linear': drawLinearCell(ctx, cx, cy, radius, seed, rng); break;
+    case 'radial': drawRadialCell(ctx, cx, cy, radius, seed, rng); break;
+    case 'fragmented': drawFragmentedCell(ctx, cx, cy, radius, seed, rng); break;
+    default: drawOrganicCell(ctx, cx, cy, radius, seed, rng); break;
+  }
+}
+
+/** Original organic style — wobbled circles, organelles, biological */
+function drawOrganicCell(
+  ctx: CanvasRenderingContext2D, cx: number, cy: number,
+  radius: number, seed: number, rng: () => number
 ): void {
   const numLobes = 5 + Math.floor(rng() * 8);
   const innerRadius = radius * (0.2 + rng() * 0.3);
@@ -169,7 +184,6 @@ export function drawCellOrganism(
   ctx.save();
   ctx.translate(cx, cy);
 
-  // Outer membrane — organic, irregular
   ctx.beginPath();
   for (let i = 0; i <= 360; i += 2) {
     const angle = (i * Math.PI) / 180;
@@ -183,22 +197,20 @@ export function drawCellOrganism(
   ctx.lineWidth = 0.8;
   ctx.stroke();
 
-  // Inner organelles
   const numOrganelles = 2 + Math.floor(rng() * 4);
   for (let o = 0; o < numOrganelles; o++) {
     const oAngle = rng() * Math.PI * 2;
     const oDist = innerRadius + rng() * (radius * 0.3);
     const oRadius = radius * (0.08 + rng() * 0.15);
-    const ox = Math.cos(oAngle) * oDist;
-    const oy = Math.sin(oAngle) * oDist;
-
     ctx.beginPath();
-    ctx.ellipse(ox, oy, oRadius, oRadius * (0.6 + rng() * 0.4), rng() * Math.PI, 0, Math.PI * 2);
+    ctx.ellipse(
+      Math.cos(oAngle) * oDist, Math.sin(oAngle) * oDist,
+      oRadius, oRadius * (0.6 + rng() * 0.4), rng() * Math.PI, 0, Math.PI * 2
+    );
     ctx.lineWidth = 0.5;
     ctx.stroke();
   }
 
-  // Nucleus
   ctx.beginPath();
   for (let i = 0; i <= 360; i += 3) {
     const angle = (i * Math.PI) / 180;
@@ -211,15 +223,259 @@ export function drawCellOrganism(
   ctx.lineWidth = 0.6;
   ctx.stroke();
 
-  // Stippling dots inside membrane
   const numDots = 10 + Math.floor(rng() * 30);
   for (let d = 0; d < numDots; d++) {
     const da = rng() * Math.PI * 2;
     const dd = rng() * radius * 0.65;
-    const dotSize = 0.3 + rng() * 0.8;
     ctx.beginPath();
-    ctx.arc(Math.cos(da) * dd, Math.sin(da) * dd, dotSize, 0, Math.PI * 2);
+    ctx.arc(Math.cos(da) * dd, Math.sin(da) * dd, 0.3 + rng() * 0.8, 0, Math.PI * 2);
     ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+/** Geometric style — angular subdivisions, grid patterns, pixel-like */
+function drawGeometricCell(
+  ctx: CanvasRenderingContext2D, cx: number, cy: number,
+  radius: number, seed: number, rng: () => number
+): void {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.lineWidth = 0.5;
+
+  const r = radius * 0.7;
+  const subdivisions = 2 + Math.floor(rng() * 4);
+  const cellW = (r * 2) / subdivisions;
+
+  // Inner grid subdivisions
+  for (let row = 0; row < subdivisions; row++) {
+    for (let col = 0; col < subdivisions; col++) {
+      const sx = -r + col * cellW;
+      const sy = -r + row * cellW;
+      if (rng() > 0.3) {
+        ctx.strokeRect(sx, sy, cellW, cellW);
+      }
+      // Fill some cells
+      if (rng() > 0.7) {
+        ctx.globalAlpha = 0.15 + rng() * 0.3;
+        ctx.fillRect(sx + 1, sy + 1, cellW - 2, cellW - 2);
+        ctx.globalAlpha = 1;
+      }
+      // Diagonal glitch lines
+      if (rng() > 0.8) {
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx + cellW, sy + cellW);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Displaced rectangle — glitch offset
+  if (rng() > 0.5) {
+    const dx = (rng() - 0.5) * r * 0.5;
+    const dy = (rng() - 0.5) * r * 0.5;
+    const dw = r * (0.3 + rng() * 0.5);
+    ctx.globalAlpha = 0.3;
+    ctx.strokeRect(dx, dy, dw, dw * (0.5 + rng()));
+    ctx.globalAlpha = 1;
+  }
+
+  // Small dots at intersections
+  for (let i = 0; i < 4 + Math.floor(rng() * 6); i++) {
+    ctx.beginPath();
+    ctx.arc((rng() - 0.5) * r * 1.4, (rng() - 0.5) * r * 1.4, 0.4 + rng() * 0.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+/** Linear style — flowing curves, meridian paths, contour fragments */
+function drawLinearCell(
+  ctx: CanvasRenderingContext2D, cx: number, cy: number,
+  radius: number, seed: number, rng: () => number
+): void {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.lineWidth = 0.6;
+
+  const numCurves = 3 + Math.floor(rng() * 5);
+  const r = radius * 0.7;
+
+  for (let c = 0; c < numCurves; c++) {
+    ctx.beginPath();
+    const startY = -r + (c / numCurves) * r * 2;
+    const amplitude = r * (0.1 + rng() * 0.4);
+    const freq = 1 + rng() * 3;
+    const phase = rng() * Math.PI * 2;
+
+    for (let x = -r; x <= r; x += 1) {
+      const y = startY + Math.sin(x * freq / r + phase) * amplitude;
+      if (x === -r) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+
+  // Dots along curves — acupuncture points / stations
+  const numDots = 3 + Math.floor(rng() * 5);
+  for (let d = 0; d < numDots; d++) {
+    const dx = (rng() - 0.5) * r * 1.4;
+    const dy = (rng() - 0.5) * r * 1.4;
+    ctx.beginPath();
+    ctx.arc(dx, dy, 1 + rng() * 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    // Tiny radiating lines from dot
+    if (rng() > 0.5) {
+      for (let l = 0; l < 3; l++) {
+        const la = rng() * Math.PI * 2;
+        const ll = 2 + rng() * 4;
+        ctx.beginPath();
+        ctx.moveTo(dx, dy);
+        ctx.lineTo(dx + Math.cos(la) * ll, dy + Math.sin(la) * ll);
+        ctx.stroke();
+      }
+    }
+  }
+
+  ctx.restore();
+}
+
+/** Radial style — concentric circles, vessels, retort shapes, planetary */
+function drawRadialCell(
+  ctx: CanvasRenderingContext2D, cx: number, cy: number,
+  radius: number, seed: number, rng: () => number
+): void {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.lineWidth = 0.5;
+
+  const r = radius * 0.7;
+  const numRings = 2 + Math.floor(rng() * 5);
+
+  // Concentric rings — some partial
+  for (let ring = 0; ring < numRings; ring++) {
+    const ringR = r * ((ring + 1) / numRings);
+    const startAngle = rng() * Math.PI * 2;
+    const arcLen = Math.PI * (0.5 + rng() * 1.5);
+    ctx.beginPath();
+    ctx.arc(0, 0, ringR, startAngle, startAngle + arcLen);
+    ctx.stroke();
+  }
+
+  // Center symbol — varies
+  const symType = Math.floor(rng() * 4);
+  if (symType === 0) {
+    // Cross
+    const cr = r * 0.25;
+    ctx.beginPath();
+    ctx.moveTo(-cr, 0); ctx.lineTo(cr, 0);
+    ctx.moveTo(0, -cr); ctx.lineTo(0, cr);
+    ctx.stroke();
+  } else if (symType === 1) {
+    // Dot
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 0.1, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (symType === 2) {
+    // Small triangle (alchemical)
+    const tr = r * 0.2;
+    ctx.beginPath();
+    ctx.moveTo(0, -tr);
+    ctx.lineTo(tr * 0.87, tr * 0.5);
+    ctx.lineTo(-tr * 0.87, tr * 0.5);
+    ctx.closePath();
+    ctx.stroke();
+  } else {
+    // Double circle
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 0.15, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 0.08, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Radial lines — like clock hands or compass bearings
+  const numLines = 2 + Math.floor(rng() * 4);
+  for (let l = 0; l < numLines; l++) {
+    const la = rng() * Math.PI * 2;
+    const innerR = r * (0.15 + rng() * 0.2);
+    const outerR = r * (0.5 + rng() * 0.5);
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(la) * innerR, Math.sin(la) * innerR);
+    ctx.lineTo(Math.cos(la) * outerR, Math.sin(la) * outerR);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+/** Fragmented style — broken arcs, shattered geometry, negative space */
+function drawFragmentedCell(
+  ctx: CanvasRenderingContext2D, cx: number, cy: number,
+  radius: number, seed: number, rng: () => number
+): void {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.lineWidth = 0.5;
+
+  const r = radius * 0.7;
+  const numFragments = 4 + Math.floor(rng() * 8);
+
+  for (let f = 0; f < numFragments; f++) {
+    const fragType = Math.floor(rng() * 4);
+
+    if (fragType === 0) {
+      // Broken arc
+      const arcR = r * (0.2 + rng() * 0.6);
+      const start = rng() * Math.PI * 2;
+      const len = Math.PI * (0.2 + rng() * 0.8);
+      ctx.beginPath();
+      ctx.arc((rng() - 0.5) * r * 0.4, (rng() - 0.5) * r * 0.4, arcR, start, start + len);
+      ctx.stroke();
+    } else if (fragType === 1) {
+      // Short line segment
+      const x1 = (rng() - 0.5) * r * 1.2;
+      const y1 = (rng() - 0.5) * r * 1.2;
+      const angle = rng() * Math.PI;
+      const len = r * (0.2 + rng() * 0.5);
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1 + Math.cos(angle) * len, y1 + Math.sin(angle) * len);
+      ctx.stroke();
+    } else if (fragType === 2) {
+      // Dot cluster
+      for (let d = 0; d < 3 + Math.floor(rng() * 4); d++) {
+        ctx.beginPath();
+        ctx.arc(
+          (rng() - 0.5) * r * 1.2,
+          (rng() - 0.5) * r * 1.2,
+          0.3 + rng() * 0.8, 0, Math.PI * 2
+        );
+        ctx.fill();
+      }
+    } else {
+      // Partial polygon
+      const sides = 3 + Math.floor(rng() * 4);
+      const polyR = r * (0.2 + rng() * 0.4);
+      const rot = rng() * Math.PI;
+      const ox = (rng() - 0.5) * r * 0.5;
+      const oy = (rng() - 0.5) * r * 0.5;
+      ctx.beginPath();
+      const startSide = Math.floor(rng() * sides);
+      const drawSides = 1 + Math.floor(rng() * (sides - 1));
+      for (let s = startSide; s <= startSide + drawSides; s++) {
+        const a = rot + (s / sides) * Math.PI * 2;
+        const px = ox + Math.cos(a) * polyR;
+        const py = oy + Math.sin(a) * polyR;
+        if (s === startSide) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
   }
 
   ctx.restore();
