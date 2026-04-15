@@ -72,10 +72,13 @@ export default function BookViewer({ entries }: BookViewerProps) {
 
       {/* Preamble — only on first page */}
       {page === 0 && (
-        <p className="text-[10px] tracking-[0.25em] text-neutral-700 text-center mb-20 max-w-lg">
+        <p className="text-[10px] tracking-[0.25em] text-neutral-700 text-center mb-16 max-w-lg">
           Found documents. Undated unless marked. Pages unnumbered. Author unknown.
         </p>
       )}
+
+      {/* Top navigation */}
+      <NavControls page={page} totalPages={totalPages} onPrev={goPrev} onNext={goNext} onRandom={goRandom} />
 
       {/* Entries */}
       <div className="max-w-2xl w-full space-y-20 min-h-[60vh]">
@@ -144,41 +147,8 @@ export default function BookViewer({ entries }: BookViewerProps) {
         ))}
       </div>
 
-      {/* Navigation */}
-      <nav className="mt-20 flex items-center gap-6 font-mono text-xs text-neutral-600">
-        <button
-          onClick={goPrev}
-          disabled={page === 0}
-          className="px-4 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
-            transition-all disabled:opacity-20 disabled:hover:border-neutral-800 disabled:hover:text-neutral-600
-            disabled:cursor-default tracking-widest"
-        >
-          ←
-        </button>
-
-        <button
-          onClick={goRandom}
-          className="px-6 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
-            transition-all tracking-[0.3em] uppercase text-[10px]"
-        >
-          Random page
-        </button>
-
-        <button
-          onClick={goNext}
-          disabled={page >= totalPages - 1}
-          className="px-4 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
-            transition-all disabled:opacity-20 disabled:hover:border-neutral-800 disabled:hover:text-neutral-600
-            disabled:cursor-default tracking-widest"
-        >
-          →
-        </button>
-      </nav>
-
-      {/* Page indicator */}
-      <p className="mt-4 text-[9px] tracking-[0.3em] text-neutral-800">
-        §{page + 1} / {totalPages}
-      </p>
+      {/* Bottom navigation */}
+      <NavControls page={page} totalPages={totalPages} onPrev={goPrev} onNext={goNext} onRandom={goRandom} />
 
       {/* Footer */}
       <footer className="mt-16 text-center space-y-4">
@@ -203,5 +173,56 @@ export default function BookViewer({ entries }: BookViewerProps) {
         </p>
       </footer>
     </main>
+  );
+}
+
+function NavControls({
+  page,
+  totalPages,
+  onPrev,
+  onNext,
+  onRandom,
+}: {
+  page: number;
+  totalPages: number;
+  onPrev: () => void;
+  onNext: () => void;
+  onRandom: () => void;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-3 my-12">
+      <nav className="flex items-center gap-6 font-mono text-xs text-neutral-600">
+        <button
+          onClick={onPrev}
+          disabled={page === 0}
+          className="px-4 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
+            transition-all disabled:opacity-20 disabled:hover:border-neutral-800 disabled:hover:text-neutral-600
+            disabled:cursor-default tracking-widest"
+        >
+          ←
+        </button>
+
+        <button
+          onClick={onRandom}
+          className="px-6 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
+            transition-all tracking-[0.3em] uppercase text-[10px]"
+        >
+          Random page
+        </button>
+
+        <button
+          onClick={onNext}
+          disabled={page >= totalPages - 1}
+          className="px-4 py-2 border border-neutral-800 hover:border-neutral-500 hover:text-neutral-300
+            transition-all disabled:opacity-20 disabled:hover:border-neutral-800 disabled:hover:text-neutral-600
+            disabled:cursor-default tracking-widest"
+        >
+          →
+        </button>
+      </nav>
+      <p className="text-[9px] tracking-[0.3em] text-neutral-800">
+        §{page + 1} / {totalPages}
+      </p>
+    </div>
   );
 }
