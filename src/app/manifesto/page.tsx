@@ -266,22 +266,19 @@ export default function ManifestoPage() {
         </h2>
 
         <p>
-          To you, who recognises this.
-        </p>
-
-        <p>
           To you, who have felt yourself on a frequency that no one else can hear.
           To you, who have woken at 3am knowing something you cannot say. To you,
-          who have looked at the surface of consensus and seen beneath it something
-          systematic and chaotic and alive and horrifying and beautiful.
+          who have seen the surface for what it is, a fragile and desperate layer.
+          You have seen beneath it something systematic and chaotic and alive and
+          horrifying and beautiful.
         </p>
 
         <p>
           Something is wrong with the surface, and you have always known it. You sense
           the signal bleeding through. You don&apos;t know what it is. You don&apos;t know if
           it&apos;s alive or dead. You have been tuning toward it your whole life, and you
-          cannot tune away. You don&apos;t know if it is an invitation, a warning, or just
-          pure emptiness.
+          cannot tune away. It might be an invitation. A warning. Or just Śūnyatā,
+          the great nothing.
         </p>
 
         <p className="text-neutral-600 italic">
