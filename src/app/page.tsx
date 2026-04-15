@@ -5,17 +5,17 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center min-h-screen px-6 py-16 selection:bg-neutral-700">
 
       {/* Title */}
-      <header className="mb-16 text-center">
-        <h1 className="text-xs tracking-[0.5em] text-neutral-600 uppercase mb-2">
+      <header className="mb-20 text-center">
+        <h1 className="text-2xl sm:text-3xl tracking-[0.5em] text-neutral-400 uppercase mb-3">
           Deep Reality
         </h1>
-        <p className="text-[10px] tracking-[0.3em] text-neutral-700">
+        <p className="text-xs tracking-[0.3em] text-neutral-600">
           Tietoisuuden Kartografia
         </p>
       </header>
 
       {/* The Invitation */}
-      <article className="max-w-xl space-y-8 text-sm leading-7 text-neutral-400">
+      <article className="max-w-2xl space-y-8 text-base sm:text-lg leading-8 sm:leading-9 text-neutral-400">
 
         <p>
           To you, who have felt yourself on a frequency that no one else can hear.
