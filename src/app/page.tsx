@@ -26,15 +26,15 @@ export default function Home() {
         </p>
 
         <p>
-          To you, who carry the <em>ikävä</em> — that immense longing for something
-          that may not even exist. A homesickness for a place you have never heard of.
-        </p>
-
-        <p>
           To you, who have felt yourself on a frequency that no one else can hear.
           To you, who have woken at 3am knowing something you cannot say. To you,
           who have looked at the surface of consensus and seen beneath it something
           systematic and alive and terrible and beautiful.
+        </p>
+
+        <p>
+          There is a place beyond, and you have sensed it — without knowing what it
+          is, or whether it is. And that place has sensed you, and wonders the same.
         </p>
 
         <p>
