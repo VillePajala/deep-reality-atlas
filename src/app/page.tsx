@@ -50,6 +50,13 @@ export default function Home() {
           Enter the Atlas
         </Link>
         <Link
+          href="/gallery"
+          className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400
+            transition-colors duration-500"
+        >
+          Gallery
+        </Link>
+        <Link
           href="/book"
           className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400
             transition-colors duration-500"
