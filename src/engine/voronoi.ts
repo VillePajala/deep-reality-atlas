@@ -197,7 +197,7 @@ function drawOrganicCell(
   ctx.lineWidth = 0.8;
   ctx.stroke();
 
-  const numOrganelles = 2 + Math.floor(rng() * 4);
+  const numOrganelles = 3 + Math.floor(rng() * 6);
   for (let o = 0; o < numOrganelles; o++) {
     const oAngle = rng() * Math.PI * 2;
     const oDist = innerRadius + rng() * (radius * 0.3);
@@ -223,7 +223,7 @@ function drawOrganicCell(
   ctx.lineWidth = 0.6;
   ctx.stroke();
 
-  const numDots = 10 + Math.floor(rng() * 30);
+  const numDots = 20 + Math.floor(rng() * 50);
   for (let d = 0; d < numDots; d++) {
     const da = rng() * Math.PI * 2;
     const dd = rng() * radius * 0.65;
@@ -245,7 +245,7 @@ function drawGeometricCell(
   ctx.lineWidth = 0.5;
 
   const r = radius * 0.7;
-  const subdivisions = 2 + Math.floor(rng() * 4);
+  const subdivisions = 3 + Math.floor(rng() * 5);
   const cellW = (r * 2) / subdivisions;
 
   // Inner grid subdivisions
@@ -301,7 +301,7 @@ function drawLinearCell(
   ctx.translate(cx, cy);
   ctx.lineWidth = 0.6;
 
-  const numCurves = 3 + Math.floor(rng() * 5);
+  const numCurves = 5 + Math.floor(rng() * 7);
   const r = radius * 0.7;
 
   for (let c = 0; c < numCurves; c++) {
@@ -353,7 +353,7 @@ function drawRadialCell(
   ctx.lineWidth = 0.5;
 
   const r = radius * 0.7;
-  const numRings = 2 + Math.floor(rng() * 5);
+  const numRings = 4 + Math.floor(rng() * 6);
 
   // Concentric rings — some partial
   for (let ring = 0; ring < numRings; ring++) {
@@ -423,7 +423,7 @@ function drawFragmentedCell(
   ctx.lineWidth = 0.5;
 
   const r = radius * 0.7;
-  const numFragments = 4 + Math.floor(rng() * 8);
+  const numFragments = 8 + Math.floor(rng() * 12);
 
   for (let f = 0; f < numFragments; f++) {
     const fragType = Math.floor(rng() * 4);

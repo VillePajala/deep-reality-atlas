@@ -14,6 +14,7 @@
 import { seedNoise } from '../engine/noise';
 import { createFlowField, drawFlowLines } from '../engine/flow-field';
 import { drawTaxonomyGrid, drawCrossReferences } from '../engine/taxonomy-grid';
+import { drawCellOrganism } from '../engine/voronoi';
 import { drawVoid, VoidConfig } from '../engine/void';
 import { createScriptSystem, writeTextBlock, drawMarginalia, writeText } from '../engine/pseudo-script';
 import { drawGeometryFragments, scatterRecurringSymbol } from '../engine/sacred-geometry';
@@ -108,12 +109,12 @@ export function renderAtlasPage(
   const voidCX = (gridQuadrant % 2 === 0) ? width * (0.6 + rng() * 0.3) : width * (0.1 + rng() * 0.3);
   const voidCY = (gridQuadrant < 2) ? height * (0.55 + rng() * 0.35) : height * (0.1 + rng() * 0.3);
 
-  // Grid size varies dramatically
-  const gridScale = 0.5 + rng() * 0.8; // 0.5 = small grid, 1.3 = huge grid
-  const gridCols = Math.floor((4 + rng() * 10) * gridScale);
-  const gridRows = Math.floor((3 + rng() * 8) * gridScale);
-  const maxGridW = width * (0.25 + rng() * 0.25);
-  const maxGridH = height * (0.25 + rng() * 0.25);
+  // Grid size — bigger, denser grids
+  const gridScale = 0.8 + rng() * 1.0;
+  const gridCols = Math.floor((6 + rng() * 14) * gridScale);
+  const gridRows = Math.floor((5 + rng() * 10) * gridScale);
+  const maxGridW = width * (0.3 + rng() * 0.35);
+  const maxGridH = height * (0.3 + rng() * 0.35);
   const cellSize = Math.min(maxGridW / gridCols, maxGridH / gridRows);
 
   // Void size varies — scaled by theme
@@ -128,8 +129,8 @@ export function renderAtlasPage(
   // Whether to have eruptions (not just entropy-dependent)
   const hasEruptions = rng() > 0.4;
 
-  // Text block positions — random
-  const numTextBlocks = 1 + Math.floor(rng() * 4);
+  // Text block positions — more text, densely annotated
+  const numTextBlocks = 3 + Math.floor(rng() * 6);
 
   // Composition style bias — some pages are more grid, some more void, some more text
   const styleBias = rng();
@@ -226,14 +227,16 @@ export function renderAtlasPage(
     drawVoid(ctx, void2, width, height, 4);
   }
 
-  // LAYER 5: Sacred geometry — scattered across random region, theme-aware
-  drawGeometryFragments(ctx,
-    width * rng() * 0.3, height * rng() * 0.3,
-    width * (0.4 + rng() * 0.5), height * (0.4 + rng() * 0.5),
-    0.3 + entropy * 0.8 + rng() * 0.3,
-    seed + 200,
-    vp.geometryShapes
-  );
+  // LAYER 5: Sacred geometry — multiple scatter passes for density
+  for (let gp = 0; gp < 2 + Math.floor(rng() * 2); gp++) {
+    drawGeometryFragments(ctx,
+      width * rng() * 0.4, height * rng() * 0.4,
+      width * (0.4 + rng() * 0.5), height * (0.4 + rng() * 0.5),
+      0.5 + entropy * 1.2 + rng() * 0.5,
+      seed + 200 + gp * 77,
+      vp.geometryShapes
+    );
+  }
 
   // LAYER 6: Branching networks — random roots and bounds
   for (let n = 0; n < numNetworks; n++) {
@@ -247,9 +250,9 @@ export function renderAtlasPage(
     const rootY = netBounds.y + rng() * netBounds.height;
     const net = generateBranching(
       netBounds, rootX, rootY,
-      60 + Math.floor(rng() * 100 + entropy * 80),
-      50 + rng() * 50, 8 + rng() * 5, 3 + rng() * 4,
-      80 + Math.floor(rng() * 50),
+      120 + Math.floor(rng() * 180 + entropy * 120),
+      40 + rng() * 60, 6 + rng() * 6, 3 + rng() * 5,
+      100 + Math.floor(rng() * 80),
       seed + 250 + n * 100
     );
     drawBranching(ctx, net, 1.5 + rng() * 2, 0.1, 0.2 + rng() * 0.3 + entropy * 0.2);
@@ -275,12 +278,12 @@ export function renderAtlasPage(
   };
   ctx.save();
   ctx.strokeStyle = '#000';
-  drawFlowLines(ctx, flowField, flowBounds, 50 + Math.floor(rng() * 80 + entropy * 100), rng, {
-    stepSize: 1 + rng(),
-    maxSteps: 100 + Math.floor(rng() * 100 + entropy * 80),
-    minWidth: 0.1 + rng() * 0.2,
-    maxWidth: 1.5 + rng() * 2 + entropy * 1.5,
-    opacity: 0.2 + rng() * 0.2 + entropy * 0.35,
+  drawFlowLines(ctx, flowField, flowBounds, 100 + Math.floor(rng() * 150 + entropy * 150), rng, {
+    stepSize: 0.8 + rng() * 0.8,
+    maxSteps: 150 + Math.floor(rng() * 150 + entropy * 120),
+    minWidth: 0.1 + rng() * 0.15,
+    maxWidth: 1.2 + rng() * 1.5 + entropy * 1.5,
+    opacity: 0.15 + rng() * 0.2 + entropy * 0.3,
   });
   ctx.restore();
 
@@ -307,7 +310,54 @@ export function renderAtlasPage(
     cellSize, padding: cellSize * 0.15,
     warpFactor: entropy, breakdownStart: 0.5,
     seed: seed + 300,
-  }, 3 + Math.floor(rng() * 6 + entropy * 6));
+  }, 6 + Math.floor(rng() * 10 + entropy * 10));
+
+  // LAYER 8b: Secondary taxonomy grid — smaller, different style, different location
+  if (rng() > 0.3) {
+    const vp2 = getVisualProfile(theme2.id);
+    const grid2Cols = 3 + Math.floor(rng() * 6);
+    const grid2Rows = 2 + Math.floor(rng() * 5);
+    const grid2CellSize = cellSize * (0.5 + rng() * 0.5);
+    // Place it away from the primary grid
+    const grid2X = (gridQuadrant % 2 === 0) ? width * (0.55 + rng() * 0.2) : width * (0.05 + rng() * 0.2);
+    const grid2Y = (gridQuadrant < 2) ? height * (0.5 + rng() * 0.2) : height * (0.05 + rng() * 0.2);
+
+    ctx.save();
+    ctx.globalAlpha = 0.6 + rng() * 0.3;
+    drawTaxonomyGrid(ctx, {
+      x: grid2X, y: grid2Y,
+      cols: grid2Cols, rows: grid2Rows,
+      cellSize: grid2CellSize,
+      padding: grid2CellSize * 0.15,
+      warpFactor: entropy * (1 + rng()),
+      breakdownStart: 0.2 + rng() * 0.3,
+      seed: seed + 350,
+      cellStyle: vp2.cellStyle,
+    });
+    ctx.restore();
+  }
+
+  // LAYER 8c: Scattered individual cells — specimens outside the grid
+  const scatteredCells = 3 + Math.floor(rng() * 8 + entropy * 5);
+  for (let sc = 0; sc < scatteredCells; sc++) {
+    const scx = width * (0.05 + rng() * 0.9);
+    const scy = height * (0.05 + rng() * 0.9);
+    const scSize = 8 + rng() * 25;
+    ctx.save();
+    ctx.globalAlpha = 0.3 + rng() * 0.4;
+    // Draw a cell border
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 0.4;
+    ctx.strokeRect(scx - scSize / 2, scy - scSize / 2, scSize, scSize);
+    // Draw organism inside
+    drawCellOrganism(ctx, scx, scy, scSize * 0.4, seed + 360 + sc, rng, rng() > 0.5 ? vp.cellStyle : 'organic');
+    // Label
+    ctx.font = `${Math.max(4, scSize * 0.15)}px monospace`;
+    ctx.fillStyle = '#000';
+    ctx.globalAlpha = 0.4;
+    ctx.fillText(`§${Math.floor(rng() * 999)}`, scx - scSize / 2 + 1, scy + scSize / 2 - 1);
+    ctx.restore();
+  }
 
   // LAYER 9: Corpus text
   drawCorpusText(ctx, fragments, fragments2, theme, width, height, seed, rng);
@@ -340,7 +390,7 @@ export function renderAtlasPage(
     );
   }
 
-  const numClusters = 2 + Math.floor(rng() * 5 + entropy * 4);
+  const numClusters = 5 + Math.floor(rng() * 10 + entropy * 8);
   for (let i = 0; i < numClusters; i++) {
     stippleRegion(ctx,
       width * (0.1 + rng() * 0.8), height * (0.1 + rng() * 0.8),
@@ -367,7 +417,7 @@ export function renderAtlasPage(
   }
 
   // LAYER 13: Recurring symbol + mantra — theme-aware symbol
-  scatterRecurringSymbol(ctx, width, height, 30 + Math.floor(rng() * 40 + entropy * 40), seed + 800, vp.symbolType);
+  scatterRecurringSymbol(ctx, width, height, 60 + Math.floor(rng() * 80 + entropy * 80), seed + 800, vp.symbolType);
   drawMantricRepetition(ctx, theme.mantras[0], width, height, seed + 810);
 
   // LAYER 14: Edge details + vignette
