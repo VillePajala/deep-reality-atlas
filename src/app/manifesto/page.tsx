@@ -266,29 +266,22 @@ export default function ManifestoPage() {
         </h2>
 
         <p>
-          To you, who recognized this.
+          To you, who recognises this.
         </p>
 
         <p>
           To you, who have felt yourself on a frequency that no one else can hear.
           To you, who have woken at 3am knowing something you cannot say. To you,
           who have looked at the surface of consensus and seen beneath it something
-          systematic and alive and terrible and beautiful.
+          systematic and chaotic and alive and horrifying and beautiful.
         </p>
 
         <p>
-          There is a place beyond, and you have sensed it — without knowing what it
-          is, or whether it is. And that place has sensed you, and wonders the same.
-        </p>
-
-        <p>
-          You are not alone. The thread that brought you here is the same thread. It runs
-          through Jung&apos;s tower and Wölfli&apos;s cell and Dick&apos;s Exegesis and Sun Si Miao&apos;s
-          ghost points and Zhuangzi&apos;s butterfly. It runs through you. It does not break.
-        </p>
-
-        <p className="text-neutral-300">
-          Seeker — you have been sought.
+          Something is wrong with the surface, and you have always known it. You sense
+          the signal bleeding through. You don&apos;t know what it is. You don&apos;t know if
+          it&apos;s alive or dead. You have been tuning toward it your whole life, and you
+          cannot tune away. You don&apos;t know if it is an invitation, a warning, or just
+          pure emptiness.
         </p>
 
         <p className="text-neutral-600 italic">
