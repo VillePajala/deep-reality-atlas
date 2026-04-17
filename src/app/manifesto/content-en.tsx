@@ -7,10 +7,10 @@
 export function ManifestoContentEN() {
   return (
     <article
-      className="max-w-xl space-y-6 text-sm leading-7 text-neutral-400"
-      style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+      className="max-w-2xl space-y-6 text-base sm:text-lg leading-8 text-neutral-300"
+      style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
     >
-      <p className="text-neutral-300 text-base leading-8">
+      <p>
         There is a structure beneath the structure.
         Beneath the skin, the meridian. Beneath the word, the vibration that was there
         before the word and will remain when the last language is forgotten. Beneath

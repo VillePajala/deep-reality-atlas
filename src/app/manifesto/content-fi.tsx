@@ -7,10 +7,10 @@
 export function ManifestoContentFI() {
   return (
     <article
-      className="max-w-xl space-y-6 text-sm leading-7 text-neutral-400"
-      style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+      className="max-w-2xl space-y-6 text-base sm:text-lg leading-8 text-neutral-300"
+      style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
     >
-      <p className="text-neutral-300 text-base leading-8">
+      <p>
         Rakenteen alla on toinen rakenne. Ihon alla meridiaani. Sanan alla värähtely, joka
         oli olemassa ennen sanaa ja joka jää jäljelle kun viimeinen kieli on unohdettu.
         Konsensustodellisuuden alla — sen yhteisesti ylläpidetyn pinnan alla, jota
