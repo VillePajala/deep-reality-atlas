@@ -16,7 +16,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 
 | # | Priority | Status | Commit |
 |---|----------|--------|--------|
-| 8 | Strong manifesto opening | ☐ | — |
+| 8 | Strong manifesto opening | ✓ | redesign(8) |
 | 2 | Journal typography upgrade | ☐ | — |
 | 5 | Title header confidence | ☐ | — |
 | 3 | Demote the atlas viewer | ☐ | — |
@@ -223,3 +223,12 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 8 — Strong manifesto opening — complete
+
+Removed the Jung "Marry the ordered to the chaos" epigraph from both
+English and Finnish manifestos. The existing first paragraph ("There
+is a structure beneath the structure...") now stands alone as the
+opener, rendered with slightly larger leading and brighter text colour
+for emphasis. Also removed the residual mycelium/sienirihmasto reference
+from the Finnish manifesto to match the earlier English change.

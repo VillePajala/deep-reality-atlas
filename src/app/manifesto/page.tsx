@@ -18,17 +18,10 @@ export default function ManifestoPage() {
         </p>
       </header>
 
-      {/* Epigraph */}
-      <blockquote className="max-w-lg text-center text-xs italic text-neutral-600 leading-6 mb-16">
-        &ldquo;Marry the ordered to the chaos — and you produce the divine child,
-        the supreme meaning beyond meaning and meaninglessness.&rdquo;
-        <footer className="mt-2 text-neutral-700 not-italic text-[10px]">— C.G. Jung, Liber Novus</footer>
-      </blockquote>
-
       {/* Manifesto body */}
       <article className="max-w-xl space-y-6 text-sm leading-7 text-neutral-400">
 
-        <p>
+        <p className="text-neutral-300 text-base leading-8">
           There is a structure beneath the structure.
           Beneath the skin, the meridian. Beneath the word, the vibration that was there
           before the word and will remain when the last language is forgotten. Beneath

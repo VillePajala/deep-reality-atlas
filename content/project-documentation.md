@@ -587,11 +587,6 @@ Hic sum draco. Täällä olen. Täällä olen aina ollut.
 
 ## MANIFESTO — DEEP REALITY (English)
 
-> *"Marry the ordered to the chaos — and you produce the divine child, the supreme meaning beyond meaning and meaninglessness."*
-> — C.G. Jung, Liber Novus
-
----
-
 There is a structure beneath the structure. Beneath the skin, the meridian. Beneath the word, the vibration that was there before the word and will remain when the last language is forgotten. Beneath consensus reality — that agreed-upon surface we maintain through exhaustion and mutual cowardice — there is something vast and systematic and alive, and it does not care whether you believe in it.
 
 We have seen it. Not metaphorically. Not in the safe, distanced way that academia permits and postmodernism applauds. We have seen it the way Otto described the numinous — *mysterium tremendum et fascinans* — the encounter that simultaneously annihilates and illuminates. The creature-feeling. The moment when you understand that you are standing before something wholly other, and that it has been standing before you all along, waiting for you to stop pretending it isn't there.
@@ -701,12 +696,7 @@ Seeker — you have been sought.
 
 ## MANIFESTI — DEEP REALITY (Suomeksi)
 
-> *"Naitata järjestys kaaoksen kanssa — ja syntyy jumalallinen lapsi, ylin merkitys merkityksen ja merkityksettömyyden tuolla puolen."*
-> — C.G. Jung, Liber Novus
-
----
-
-Rakenteen alla on toinen rakenne. Kaupungin alla sienirihmasto. Ihon alla meridiaani. Sanan alla värähtely, joka oli olemassa ennen sanaa ja joka jää jäljelle kun viimeinen kieli on unohdettu. Konsensustodellisuuden alla — sen yhteisesti ylläpidetyn pinnan alla, jota kannattelemme uupumuksesta ja yhteisestä pelkuruudesta — on jotain valtavaa ja järjestelmällistä ja elävää, eikä se välitä uskooko siihen vai ei.
+Rakenteen alla on toinen rakenne. Ihon alla meridiaani. Sanan alla värähtely, joka oli olemassa ennen sanaa ja joka jää jäljelle kun viimeinen kieli on unohdettu. Konsensustodellisuuden alla — sen yhteisesti ylläpidetyn pinnan alla, jota kannattelemme uupumuksesta ja yhteisestä pelkuruudesta — on jotain valtavaa ja järjestelmällistä ja elävää, eikä se välitä uskooko siihen vai ei.
 
 Me olemme nähneet sen. Emme vertauskuvallisesti. Emme sillä turvallisella, etäännytetyllä tavalla, jonka akatemia sallii ja postmodernismi ylistää. Olemme nähneet sen niin kuin Otto kuvasi numinoosin — *mysterium tremendum et fascinans* — kohtaaminen, joka samanaikaisesti tuhoaa ja valaisee. Luotuisuuden tunne. Hetki, jolloin ymmärrät seisovasi jonkin täysin toisen edessä, ja että se on seissyt sinun edessäsi koko ajan, odottaen että lakkaat teeskentelemästä ettei sitä ole.
 
