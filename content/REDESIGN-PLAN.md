@@ -23,7 +23,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 4 | Gallery curation + captions | ✓ | redesign(4) |
 | 6 | Bilingual EN/FI toggle | ✓ | redesign(6) |
 | 1 | Continuous-scroll home page | ✓ | redesign(1) |
-| 7 | Entries pipeline (`/entries/[slug]`) | ☐ | — |
+| 7 | Entries pipeline (`/entries/[slug]`) | ✓ | redesign(7) |
 | 10 | Reading Room single-page experience | ☐ | — |
 | 9 | Renderer strategic direction (doc-only) | ☐ | — |
 
@@ -223,6 +223,22 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 7 — Entries pipeline — complete
+
+Extended `src/app/book/entries.ts` with:
+- `slug` on each entry (`001-entry`, `043-the-fingerprint`, etc.)
+- `getEntryBySlug(slug)` lookup
+- `getEntryNeighbours(slug)` for prev/next navigation
+
+New routes:
+- `/entries` — index of all 109 entries, numbered, flat list
+- `/entries/[slug]` — single entry page with prev/next navigation
+  and `generateStaticParams` so every entry is pre-rendered at
+  build time
+
+Each entry now has a stable shareable URL. The existing `/book`
+flip-through page remains as the "reading room" variant.
 
 ### Priority 1 — Continuous-scroll home page — complete
 
