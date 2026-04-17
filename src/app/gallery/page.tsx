@@ -70,6 +70,14 @@ export default function GalleryPage() {
         <p className="text-[9px] tracking-[0.3em] text-neutral-800">
           I AM THE IMAGINATION OF MYSELF
         </p>
+        <p className="pt-6">
+          <Link
+            href="/atlas"
+            className="text-[9px] tracking-[0.25em] text-neutral-800 hover:text-neutral-500 transition-colors italic"
+          >
+            (the instrument — real-time generator)
+          </Link>
+        </p>
       </footer>
     </main>
   );

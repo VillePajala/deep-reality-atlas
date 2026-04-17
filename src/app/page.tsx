@@ -49,36 +49,29 @@ export default function Home() {
 
       </article>
 
-      {/* Enter the Atlas */}
-      <nav className="mt-20 flex flex-col items-center gap-6">
-        <Link
-          href="/atlas"
-          className="group px-8 py-3 border border-neutral-800 hover:border-neutral-500
-            text-xs tracking-[0.4em] text-neutral-600 hover:text-neutral-300
-            transition-all duration-500 uppercase"
-        >
-          Enter the Atlas
-        </Link>
-        <Link
-          href="/gallery"
-          className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400
-            transition-colors duration-500"
-        >
-          Gallery
-        </Link>
+      {/* Three reading destinations — journal, manifesto, gallery */}
+      <nav className="mt-20 flex flex-col items-center gap-5">
         <Link
           href="/book"
-          className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400
-            transition-colors duration-500"
+          className="group px-8 py-3 border border-neutral-800 hover:border-neutral-500
+            text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-200
+            transition-all duration-500 uppercase"
         >
           The Journal
         </Link>
         <Link
           href="/manifesto"
-          className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400
-            transition-colors duration-500"
+          className="text-[11px] tracking-[0.3em] text-neutral-600 hover:text-neutral-300
+            transition-colors duration-500 uppercase"
         >
           Read the Manifesto
+        </Link>
+        <Link
+          href="/gallery"
+          className="text-[11px] tracking-[0.3em] text-neutral-600 hover:text-neutral-300
+            transition-colors duration-500 uppercase"
+        >
+          Gallery
         </Link>
       </nav>
 

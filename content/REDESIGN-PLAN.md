@@ -19,7 +19,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 8 | Strong manifesto opening | ✓ | redesign(8) |
 | 2 | Journal typography upgrade | ✓ | redesign(2) |
 | 5 | Title header confidence | ✓ | redesign(5) |
-| 3 | Demote the atlas viewer | ☐ | — |
+| 3 | Demote the atlas viewer | ✓ | redesign(3) |
 | 4 | Gallery curation + captions | ☐ | — |
 | 6 | Bilingual EN/FI toggle | ☐ | — |
 | 1 | Continuous-scroll home page | ☐ | — |
@@ -223,6 +223,15 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 3 — Demote the atlas viewer — complete
+
+Removed "Enter the Atlas" primary CTA from the home page. Home nav
+now lists three reading destinations: The Journal (primary), the
+Manifesto, the Gallery. The `/atlas` route still exists; it is now
+reachable as a quiet italic footer link from the Gallery page labelled
+"(the instrument — real-time generator)". The interactive viewer is
+now a deep-link curiosity rather than the first impression.
 
 ### Priority 5 — Title header confidence — complete
 
