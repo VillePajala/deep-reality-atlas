@@ -17,7 +17,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | # | Priority | Status | Commit |
 |---|----------|--------|--------|
 | 8 | Strong manifesto opening | ✓ | redesign(8) |
-| 2 | Journal typography upgrade | ☐ | — |
+| 2 | Journal typography upgrade | ✓ | redesign(2) |
 | 5 | Title header confidence | ☐ | — |
 | 3 | Demote the atlas viewer | ☐ | — |
 | 4 | Gallery curation + captions | ☐ | — |
@@ -223,6 +223,20 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 2 — Journal typography upgrade — complete
+
+Loaded EB Garamond via `next/font/google` alongside the existing
+Geist Mono. Registered `--font-serif` CSS variable. Journal entry
+bodies now render in serif at a larger body size (`text-lg`) for
+a notebook/diary feel. Kept mono for:
+- Entry titles (the found-document label)
+- ALL-CAPS "scream" paragraphs (the instrument breaking through)
+- List-style paragraphs (enumerations, specimen counts)
+- Nav, page counters, footer — the instrument UI
+
+The serif transforms the reading experience. Journal now feels like
+literature; Atlas viewer / Gallery keep their terminal aesthetic.
 
 ### Priority 8 — Strong manifesto opening — complete
 

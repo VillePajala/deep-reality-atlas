@@ -85,15 +85,18 @@ export default function BookViewer({ entries }: BookViewerProps) {
         {currentEntries.map((entry, i) => (
           <article key={`${page}-${i}`}>
 
-            {/* Entry title */}
+            {/* Entry title — stays in mono as the found-document label */}
             {entry.title && (
-              <p className="text-[10px] tracking-[0.2em] text-neutral-600 mb-6">
+              <p className="text-[10px] tracking-[0.2em] text-neutral-600 mb-6 font-mono">
                 {entry.title}
               </p>
             )}
 
-            {/* Entry body */}
-            <div className="space-y-5">
+            {/* Entry body — serif for the diary voice */}
+            <div
+              className="space-y-6"
+              style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+            >
               {entry.body.split('\n\n').map((paragraph, j) => {
                 const trimmed = paragraph.trim();
                 if (!trimmed) return null;
@@ -104,7 +107,11 @@ export default function BookViewer({ entries }: BookViewerProps) {
 
                 if (isList) {
                   return (
-                    <div key={j} className="text-sm leading-7 text-neutral-500 pl-4">
+                    <div
+                      key={j}
+                      className="text-base leading-8 text-neutral-400 pl-4 font-mono"
+                      style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
+                    >
                       {trimmed.split('\n').map((line, k) => (
                         <p key={k}>{line}</p>
                       ))}
@@ -113,8 +120,13 @@ export default function BookViewer({ entries }: BookViewerProps) {
                 }
 
                 if (isScream) {
+                  // ALL CAPS outbursts keep the instrument's voice — mono, tight
                   return (
-                    <p key={j} className="text-xs tracking-[0.15em] leading-7 text-neutral-400">
+                    <p
+                      key={j}
+                      className="text-sm tracking-[0.15em] leading-7 text-neutral-300"
+                      style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
+                    >
                       {trimmed}
                     </p>
                   );
@@ -122,14 +134,14 @@ export default function BookViewer({ entries }: BookViewerProps) {
 
                 if (isBreath) {
                   return (
-                    <p key={j} className="text-base leading-8 text-neutral-500 italic">
+                    <p key={j} className="text-lg leading-8 text-neutral-400 italic">
                       {trimmed}
                     </p>
                   );
                 }
 
                 return (
-                  <p key={j} className="text-base leading-8 text-neutral-500">
+                  <p key={j} className="text-lg leading-8 text-neutral-300">
                     {trimmed}
                   </p>
                 );
