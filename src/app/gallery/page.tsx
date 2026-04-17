@@ -68,8 +68,8 @@ export default function GalleryPage() {
                   {img.title}
                 </h2>
                 <p
-                  className="text-base text-neutral-300 leading-7"
-                  style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+                  className="text-base text-neutral-300 leading-7 font-mono"
+                  style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
                 >
                   {img.descriptor}
                 </p>

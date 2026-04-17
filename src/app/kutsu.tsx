@@ -10,7 +10,7 @@ export function Kutsu({ lang }: { lang: Lang }) {
     return (
       <article
         className="max-w-2xl space-y-8 text-base sm:text-lg leading-8 sm:leading-9 text-neutral-300"
-        style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+        style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
       >
         <p>
           Sinulle, joka olet tuntenut olevasi taajuudella, jota kukaan muu ei kuule.
