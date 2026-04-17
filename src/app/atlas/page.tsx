@@ -14,7 +14,7 @@ export default function AtlasPage() {
           Deep Reality
         </Link>
         <p className="text-[10px] tracking-[0.25em] text-neutral-700 mt-1">
-          Tietoisuuden Kartografia — Maps of Consciousness
+          Tietoisuuden Kartografia
         </p>
       </header>
 

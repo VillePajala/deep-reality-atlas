@@ -16,7 +16,7 @@ const ebGaramond = EB_Garamond({
 
 export const metadata: Metadata = {
   title: "Deep Reality — Investigation into Deeper Realms",
-  description: "Tietoisuuden Kartografia. Maps of consciousness. An atlas documenting invisible systems.",
+  description: "Tietoisuuden Kartografia. An atlas documenting invisible systems.",
 };
 
 export default function RootLayout({
