@@ -25,7 +25,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 1 | Continuous-scroll home page | ✓ | redesign(1) |
 | 7 | Entries pipeline (`/entries/[slug]`) | ✓ | redesign(7) |
 | 10 | Reading Room single-page experience | ✓ | redesign(10) |
-| 9 | Renderer strategic direction (doc-only) | ☐ | — |
+| 9 | Renderer strategic direction (doc-only) | ✓ | redesign(9) |
 
 ---
 
@@ -223,6 +223,15 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 9 — Renderer strategic direction — complete
+
+Added `renderer/DIRECTION.md` stating the anti-principle (do not
+try to look hand-drawn) and the actual principle (serve the text,
+let Midjourney serve the vision). Lists which renderers are on ice
+and which are active. Guidance for future renderer work.
+
+Doc-only change. No code impact.
 
 ### Priority 10 — Reading Room — complete
 
