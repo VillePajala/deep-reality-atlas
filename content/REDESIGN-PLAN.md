@@ -21,7 +21,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 5 | Title header confidence | ✓ | redesign(5) |
 | 3 | Demote the atlas viewer | ✓ | redesign(3) |
 | 4 | Gallery curation + captions | ✓ | redesign(4) |
-| 6 | Bilingual EN/FI toggle | ☐ | — |
+| 6 | Bilingual EN/FI toggle | ✓ | redesign(6) |
 | 1 | Continuous-scroll home page | ☐ | — |
 | 7 | Entries pipeline (`/entries/[slug]`) | ☐ | — |
 | 10 | Reading Room single-page experience | ☐ | — |
@@ -223,6 +223,21 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 6 — Bilingual EN/FI toggle — complete (infrastructure + manifesto)
+
+Added `src/components/LanguageToggle.tsx` — a client component using
+Next 16's `usePathname` + `useSearchParams` to swap between EN/FI
+via a query parameter. The Manifesto page is now async, reads
+`searchParams.lang`, and renders one of two content components:
+`content-en.tsx` or `content-fi.tsx`. Both contain the full
+manifesto text extracted from `content/project-documentation.md`.
+
+The `/atlas` primary CTA previously lingering at the bottom of the
+manifesto was also removed in this pass (completing priority 3).
+
+Home-page bilingual support is deferred to priority 1 (home rewrite)
+so we don't do throwaway work on soon-to-be-replaced markup.
 
 ### Priority 4 — Gallery curation + captions — complete
 
