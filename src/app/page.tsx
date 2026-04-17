@@ -4,13 +4,23 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen px-6 py-16 selection:bg-neutral-700">
 
-      {/* Title */}
-      <header className="mb-20 text-center">
-        <h1 className="text-2xl sm:text-3xl tracking-[0.5em] text-neutral-400 uppercase mb-3">
+      {/* Title — book cover weight */}
+      <header className="mb-24 text-center">
+        <h1
+          className="text-5xl sm:text-7xl tracking-wide text-neutral-200 mb-6 italic"
+          style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+        >
           Deep Reality
         </h1>
-        <p className="text-xs tracking-[0.3em] text-neutral-600">
-          Tietoisuuden Kartografia
+        <div className="flex items-center justify-center gap-4 text-neutral-600">
+          <span className="h-px w-12 bg-neutral-700" />
+          <p className="text-[11px] tracking-[0.4em] uppercase">
+            Tietoisuuden Kartografia
+          </p>
+          <span className="h-px w-12 bg-neutral-700" />
+        </div>
+        <p className="mt-4 text-[10px] tracking-[0.25em] text-neutral-700 italic">
+          an atlas of invisible systems
         </p>
       </header>
 

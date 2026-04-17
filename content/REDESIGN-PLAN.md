@@ -18,7 +18,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 |---|----------|--------|--------|
 | 8 | Strong manifesto opening | ✓ | redesign(8) |
 | 2 | Journal typography upgrade | ✓ | redesign(2) |
-| 5 | Title header confidence | ☐ | — |
+| 5 | Title header confidence | ✓ | redesign(5) |
 | 3 | Demote the atlas viewer | ☐ | — |
 | 4 | Gallery curation + captions | ☐ | — |
 | 6 | Bilingual EN/FI toggle | ☐ | — |
@@ -223,6 +223,13 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 5 — Title header confidence — complete
+
+Home page title now uses EB Garamond italic at 5xl/7xl, flanked by
+dividing rules and the Finnish subtitle in spaced uppercase mono.
+Added a subtitle line "an atlas of invisible systems". The page
+opens with book-cover weight rather than minimal-dev-site weight.
 
 ### Priority 2 — Journal typography upgrade — complete
 
