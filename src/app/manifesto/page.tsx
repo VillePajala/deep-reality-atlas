@@ -29,7 +29,7 @@ export default function ManifestoPage() {
       <article className="max-w-xl space-y-6 text-sm leading-7 text-neutral-400">
 
         <p>
-          There is a structure beneath the structure. Beneath the city, the mycelium.
+          There is a structure beneath the structure.
           Beneath the skin, the meridian. Beneath the word, the vibration that was there
           before the word and will remain when the last language is forgotten. Beneath
           consensus reality — that agreed-upon surface we maintain through exhaustion and

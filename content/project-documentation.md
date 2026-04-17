@@ -592,7 +592,7 @@ Hic sum draco. Täällä olen. Täällä olen aina ollut.
 
 ---
 
-There is a structure beneath the structure. Beneath the city, the mycelium. Beneath the skin, the meridian. Beneath the word, the vibration that was there before the word and will remain when the last language is forgotten. Beneath consensus reality — that agreed-upon surface we maintain through exhaustion and mutual cowardice — there is something vast and systematic and alive, and it does not care whether you believe in it.
+There is a structure beneath the structure. Beneath the skin, the meridian. Beneath the word, the vibration that was there before the word and will remain when the last language is forgotten. Beneath consensus reality — that agreed-upon surface we maintain through exhaustion and mutual cowardice — there is something vast and systematic and alive, and it does not care whether you believe in it.
 
 We have seen it. Not metaphorically. Not in the safe, distanced way that academia permits and postmodernism applauds. We have seen it the way Otto described the numinous — *mysterium tremendum et fascinans* — the encounter that simultaneously annihilates and illuminates. The creature-feeling. The moment when you understand that you are standing before something wholly other, and that it has been standing before you all along, waiting for you to stop pretending it isn't there.
 
