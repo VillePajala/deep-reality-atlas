@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { Kutsu } from './kutsu';
+import { Plate } from './gallery/Plate';
 
 type Lang = 'en' | 'fi';
 
@@ -37,8 +38,8 @@ const MANIFESTO_EXCERPT_FI: ManifestoExcerpt = {
 };
 
 const HERO_IMAGE = {
-  src: '/gallery/unh-04-dark-torn.png',
-  alt: 'The page that was torn — Plate I from the atlas gallery',
+  src: '/gallery/031-central-absence.png',
+  alt: 'The central absence — Page 031 from the atlas',
 };
 
 const LABELS = {
@@ -187,13 +188,9 @@ export default async function Home({
 
       {/* Hero image from the gallery */}
       <figure className="w-full max-w-3xl">
-        <img
-          src={HERO_IMAGE.src}
-          alt={HERO_IMAGE.alt}
-          className="w-full border border-neutral-800"
-        />
+        <Plate src={HERO_IMAGE.src} alt={HERO_IMAGE.alt} priority />
         <figcaption className="mt-4 text-center text-[10px] tracking-[0.3em] text-neutral-700 uppercase">
-          Plate I — the page that was torn
+          Page 031 — the central absence
         </figcaption>
       </figure>
 

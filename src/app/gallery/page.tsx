@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { galleryImages } from './images';
+import { Plate } from './Plate';
 
 export default function GalleryPage() {
   return (
@@ -21,14 +22,15 @@ export default function GalleryPage() {
           The Gallery
         </h1>
         <p className="mt-3 text-[10px] tracking-[0.3em] text-neutral-400 uppercase font-mono">
-          Plates I–IX
+          Pages VII – CCXVII
         </p>
         <p
           className="mt-6 max-w-xl text-sm text-neutral-500 italic leading-7"
           style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
         >
-          Pages from the atlas, paired with fragments of the journal that accompanies them.
-          The images are evidence; the text is what the evidence is evidence of.
+          Sixteen pages from the atlas, non-consecutive, paired with fragments
+          of the journal that accompanies them. The images are evidence; the
+          text is what the evidence is evidence of.
         </p>
       </header>
 
@@ -36,7 +38,7 @@ export default function GalleryPage() {
         <p className="text-neutral-600 text-sm">No plates yet.</p>
       ) : (
         <div className="w-full max-w-4xl space-y-32">
-          {galleryImages.map((img) => (
+          {galleryImages.map((img, i) => (
             <article key={img.src} className="flex flex-col items-center">
 
               {/* Plate label */}
@@ -44,20 +46,8 @@ export default function GalleryPage() {
                 {img.plate}
               </p>
 
-              {/* Image */}
-              <a
-                href={img.src}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full block"
-              >
-                <img
-                  src={img.src}
-                  alt={img.title}
-                  className="w-full border border-neutral-800 hover:border-neutral-500
-                    transition-colors cursor-zoom-in"
-                />
-              </a>
+              {/* Image — client-side fade-in, no progressive paint visible */}
+              <Plate src={img.src} alt={img.title} priority={i === 0} />
 
               {/* Caption */}
               <div className="mt-10 max-w-2xl text-center space-y-6">
@@ -101,9 +91,6 @@ export default function GalleryPage() {
 
       <footer className="mt-32 text-center space-y-4">
         <nav className="flex gap-8 justify-center">
-          <Link href="/gallery-2" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
-            Gallery II
-          </Link>
           <Link href="/book" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
             The Journal
           </Link>

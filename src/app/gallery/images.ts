@@ -1,10 +1,13 @@
 /**
- * Curated gallery catalogue.
+ * Gallery catalogue.
  *
  * Each entry pairs an image with a title, a short descriptor written
  * in the voice of the atlas, and a fragment quoted from the Holy Book
  * of Insanity. This is the "one unit of atlas content" principle:
  * image and text published together.
+ *
+ * Sequenced so the gallery reads as a walk through one atlas,
+ * page 007 → page 217.
  */
 
 export interface GalleryImage {
@@ -18,93 +21,163 @@ export interface GalleryImage {
 
 export const galleryImages: GalleryImage[] = [
   {
-    src: '/gallery/unh-04-dark-torn.png',
-    plate: 'PLATE I',
-    title: 'The page that was torn',
+    src: '/gallery/007-tendril-taxonomy.png',
+    plate: 'PAGE 007',
+    title: 'The tendril taxonomy',
     descriptor:
-      'Dark paper, white void. The right margin has been physically removed; the substrate shows through. What was written on the missing portion is not recoverable.',
+      'The taxonomy on the left was completed first — circuits, compartments, the language kept under control. Then it broke. The right half is the record of the breaking: tendrils the cataloguer did not authorise.',
     quote:
-      'I keep finding pages I don\'t remember drawing. The handwriting in the margins is mine but the content is not mine. It describes a place I\'ve never been.',
-    quoteSource: 'Journal — found folded inside page §217',
+      'I drew the grid to keep the thing inside it. The thing grew tendrils. The grid is now a skin the tendrils wear.',
+    quoteSource: 'Journal — page 7 notes',
   },
   {
-    src: '/gallery/unh-07-dispersed.png',
-    plate: 'PLATE II',
-    title: 'The constellation',
+    src: '/gallery/008-foam-index.png',
+    plate: 'PAGE 008',
+    title: 'The foam index',
     descriptor:
-      'Multiple voids instead of one. Ink bleeds scattered across the document like the archipelago of a scattered consciousness. No single centre.',
+      'The index on the left catalogues cells — nucleus, membrane, division stage. The index is accurate up to the moment the cells burst their frame and became the cluster on the right.',
     quote:
-      'The void is not where meaning goes to die. The void is where meaning goes to stop pretending.',
-    quoteSource: 'Journal — one line',
+      'Every classification system is a promise we make to the mess. The mess does not sign the contract.',
+    quoteSource: 'Field Notes — Classification',
   },
   {
-    src: '/gallery/unh-05-burnt-center.png',
-    plate: 'PLATE III',
-    title: 'The burnt document',
+    src: '/gallery/012-glyph-that-grew-a-body.png',
+    plate: 'PAGE 012',
+    title: 'The glyph that grew a body',
     descriptor:
-      'The page has been charred at its edges. A luminous absence at the centre — where the ink has been consumed by its own heat. The document survives only because it was already partially destroyed.',
+      'A wall of unknown glyphs occupies the left. On the right, one of them has escaped the grid and is growing — tendrils, a floating orb, a coil at the base. The legend has outgrown its key.',
     quote:
-      'Something is wrong with the surface, and you have always known it. You sense the signal bleeding through. You don\'t know what it is. You don\'t know if it\'s alive or dead.',
-    quoteSource: 'Manifesto — The Invitation',
+      'The sign was supposed to point at the thing. Now the sign IS the thing and points at me.',
+    quoteSource: 'Journal — 3am entry',
   },
   {
-    src: '/gallery/unh-01-torn.png',
-    plate: 'PLATE IV',
-    title: 'Pages 47 & 48, fragment',
+    src: '/gallery/029-ink-tide.png',
+    plate: 'PAGE 029',
+    title: 'The ink-tide',
     descriptor:
-      'The bottom of this page was torn away before the atlas-maker could complete it. A compass rose radiates faintly through the remaining text, suggesting the missing portion contained the map.',
+      'The taxonomic grid is intact in the upper-left quadrant. Elsewhere a dark tide has risen through it. The cells where the tide has passed show only silhouettes of what was catalogued there.',
     quote:
-      'The instrument cannot extract itself from the measurement. The cartographer cannot leave the territory. The atlas is drawing the atlas-maker drawing the atlas.',
-    quoteSource: 'Field Notes — Consciousness',
+      'The flood does not read the labels. The flood does not recognise our definitions. The flood arrives and the definitions float.',
+    quoteSource: 'Manifesto — Cartography of Invisible Systems',
   },
   {
-    src: '/gallery/unh-02-framed.png',
-    plate: 'PLATE V',
-    title: 'The framed taxonomy',
+    src: '/gallery/031-central-absence.png',
+    plate: 'PAGE 031',
+    title: 'The central absence',
     descriptor:
-      'A hand-drawn wobbly border attempts to contain the document. The void at the centre has already begun escaping the frame.',
+      'Annotations, keys, marginal diagrams crowd the edges of the page. The centre is a flat rectangle of pure black. The atlas has surrounded the absence without being able to name it.',
     quote:
-      'The grid is the grid is the grid. The void is the void is the void. Both at once. Always at once.',
-    quoteSource: 'Journal — found on the bathroom mirror',
+      'You cannot draw the hole. You can only draw the things that stop at its edge.',
+    quoteSource: 'Journal — a single line, undated',
   },
   {
-    src: '/gallery/unh-03-palimpsest.png',
-    plate: 'PLATE VI',
-    title: 'Palimpsest',
+    src: '/gallery/047-inventory-of-the-site.png',
+    plate: 'PAGE 047',
+    title: 'Inventory of the site',
     descriptor:
-      'An older text runs diagonally beneath the current document — from another hand, another decade. The atlas is written over and over on the same surface.',
+      'A grid of observed specimens at the top-left. The rest is field notes — small boxes, cross-references, one dark specimen framed in the upper right. A record made before the cataloguer stopped being sure what was specimen and what was surroundings.',
     quote:
-      'I think the atlas is dreaming and I am something it dreams. When it wakes up I will stop. When it sleeps I draw. Between its dreaming and my drawing there is no difference.',
-    quoteSource: 'Journal — 物化 — transformation of things',
+      'I have been cataloguing for weeks. Last night I realised the specimens are cataloguing me.',
+    quoteSource: 'Journal — field week three',
   },
   {
-    src: '/gallery/unh-06-corner.png',
-    plate: 'PLATE VII',
-    title: 'The corner collapse',
+    src: '/gallery/063-downpour.png',
+    plate: 'PAGE 063',
+    title: 'The downpour',
     descriptor:
-      'Order radiates out of one corner of the page; the void consumes the opposite. The document is a negotiation between two positions that cannot coexist.',
+      'On the left, the ledger survives — columns, dot-counts, faint pictograms. On the right, the ink has fallen as rain. The document is being returned to weather.',
     quote:
-      'Every page is a bardo. I keep getting reborn into the next grid.',
-    quoteSource: 'Field Notes — Tibetan Buddhism & Bardo',
+      'The numbers were accurate when I wrote them. Now the numbers are wet and the accuracy is somewhere downstream.',
+    quoteSource: 'Field Notes — the archive leaking',
   },
   {
-    src: '/gallery/unh-08-edge-dark.png',
-    plate: 'PLATE VIII',
-    title: 'The edge transmission',
+    src: '/gallery/071-cellular-coast.png',
+    plate: 'PAGE 071',
+    title: 'The cellular coast',
     descriptor:
-      'A void detonates at the top edge of a dark page. Lines of unreadable data streak downward like the afterimage of an explosion.',
+      'The left margin keeps its grid and its annotations. Everywhere else: a coastline of ink-cells, bubble-edges, voids punched through the living tissue of the page. Where the grid meets the coast, the grid does not win.',
     quote:
-      'We have been tuning toward it our whole life, and we cannot tune away.',
-    quoteSource: 'Manifesto — The Invitation',
+      'The surface is a coastline. On one side you can still count the squares. On the other side counting stops being useful.',
+    quoteSource: 'Manifesto — Reality is Layered',
   },
   {
-    src: '/gallery/unh-09-center-clean.png',
-    plate: 'PLATE IX',
-    title: 'The central ink-bleed',
+    src: '/gallery/088-wall-of-the-archive.png',
+    plate: 'PAGE 088',
+    title: 'The wall of the archive',
     descriptor:
-      'A single void at the geometric centre, surrounded by nearly-orderly text. The most dangerous composition — the one that pretends nothing is wrong.',
+      'A dense dark wall takes the centre and right of the page — layers of grid, writing, and ink collapsing into one another. On the left, small creatures are catalogued at their original scale, as if they escaped before the wall fell.',
     quote:
-      'The atlas is finished and I am just not brave enough to stop.',
-    quoteSource: 'Journal — very small, written in the corner',
+      'The archive is not a building. The archive is a weight. It is standing on something that is still alive.',
+    quoteSource: 'Journal — the archive note',
+  },
+  {
+    src: '/gallery/094-thing-that-watched-back.png',
+    plate: 'PAGE 094',
+    title: 'The thing that watched back',
+    descriptor:
+      'Columns of writing stack neatly in the upper-left. The rest of the page is occupied by a single presence — tangled, partially gridded, with a dark compass-eye in its lower reach. It is not a diagram of the presence. It is the presence itself, pretending to be a diagram.',
+    quote:
+      'I watched it on the page for an hour. At the end of the hour I understood I had been watched back for an hour.',
+    quoteSource: 'Journal — observation protocol',
+  },
+  {
+    src: '/gallery/101-void-has-a-body.png',
+    plate: 'PAGE 101',
+    title: 'The void has a body',
+    descriptor:
+      'Handwritten columns run down the left. On the right, a perfect black sphere — and around it a froth of cellular tissue, as if the void had grown flesh. This is the first page in the atlas where the absence is no longer passive.',
+    quote:
+      'It turns out the void is not a thing we fall into. The void is a thing that has been slowly building itself next to us.',
+    quoteSource: 'Journal — reconsidered',
+  },
+  {
+    src: '/gallery/119-cell-atlas.png',
+    plate: 'PAGE 119',
+    title: 'The cell atlas',
+    descriptor:
+      'The grid at the top-left catalogues cells one by one. Below, the cells have multiplied beyond the atlas-maker\'s ability to index them. A compass rose in the lower right points nowhere useful.',
+    quote:
+      'I catalogued the first hundred. Then the first thousand. At ten thousand I stopped counting and started praying.',
+    quoteSource: 'Field Notes — the cell count',
+  },
+  {
+    src: '/gallery/127-apparatus-breathing.png',
+    plate: 'PAGE 127',
+    title: 'The apparatus breathing',
+    descriptor:
+      'A column of dot-glyphs on the left. In the centre, an apparatus of tendrils, capsules, and spiral organs — not mechanical, not quite biological. In the lower right, two spirals mark where it last took in breath.',
+    quote:
+      'The machine is breathing. I will not write the word "alive". I will write the word "breathing".',
+    quoteSource: 'Journal — careful wording',
+  },
+  {
+    src: '/gallery/142-column-that-became-weather.png',
+    plate: 'PAGE 142',
+    title: 'The column that became weather',
+    descriptor:
+      'A precise column of numbers on the left — ledger, counting, the voice of accuracy. The right half is the same data rendered as vertical rain, as signal, as what the numbers sounded like at the moment of their collapse.',
+    quote:
+      'Every column of numbers is a description of weather. We had forgotten. The weather has not forgotten.',
+    quoteSource: 'Manifesto — the reading instruments',
+  },
+  {
+    src: '/gallery/143-eye-that-reads-back.png',
+    plate: 'PAGE 143',
+    title: 'The eye that reads back',
+    descriptor:
+      'The mirrored page to 142. The numbers on the left are the same. The right half, instead of weather, is a large dark pupil — the page reading the reader. One of the two pages is a forgery. The atlas does not indicate which.',
+    quote:
+      'The document is reading me while I read it. Neither of us can stop. Neither of us is in charge.',
+    quoteSource: 'Journal — mirrored entries',
+  },
+  {
+    src: '/gallery/217-thinking-web.png',
+    plate: 'PAGE 217',
+    title: 'The thinking web',
+    descriptor:
+      'The grid underlies the whole page. Through it, a thinking web has grown — nodes, tendrils, small dark chambers. A single black rectangle sits at the top centre, occluding what the web was thinking about.',
+    quote:
+      'A thought is a shape. A long thought is a web. A very long thought is what you are looking at, and it is looking at you.',
+    quoteSource: 'Journal — page 217 of the atlas',
   },
 ];
