@@ -218,13 +218,20 @@ export default async function Home({
         {labels.close}
       </p>
 
-      {/* Quiet footer — three destinations */}
+      {/* Quiet footer — four destinations */}
       <nav className="flex flex-col items-center gap-5 mb-16">
         <Link
-          href="/book"
+          href="/reading-room"
           className="group px-8 py-3 border border-neutral-800 hover:border-neutral-500
             text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-200
             transition-all duration-500 uppercase"
+        >
+          {lang === 'fi' ? 'Lukusali' : 'Reading Room'}
+        </Link>
+        <Link
+          href="/book"
+          className="text-[11px] tracking-[0.3em] text-neutral-600 hover:text-neutral-300
+            transition-colors duration-500 uppercase"
         >
           {labels.footer.journal}
         </Link>

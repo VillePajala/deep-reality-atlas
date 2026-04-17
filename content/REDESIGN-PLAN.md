@@ -24,7 +24,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 6 | Bilingual EN/FI toggle | ✓ | redesign(6) |
 | 1 | Continuous-scroll home page | ✓ | redesign(1) |
 | 7 | Entries pipeline (`/entries/[slug]`) | ✓ | redesign(7) |
-| 10 | Reading Room single-page experience | ☐ | — |
+| 10 | Reading Room single-page experience | ✓ | redesign(10) |
 | 9 | Renderer strategic direction (doc-only) | ☐ | — |
 
 ---
@@ -223,6 +223,30 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 10 — Reading Room — complete
+
+`/reading-room` renders ONE curated journal entry as a designed
+manuscript page. A hand-picked slug list (8 entries) rotates based
+on day-of-year for deterministic daily freshness. Override with
+`?slug=...`.
+
+Design details:
+- Dark parchment panel with SVG hand-drawn wobbly border + corner
+  flourishes
+- Drop-cap for the first paragraph (EB Garamond, 7xl/8xl)
+- Large serif body (text-xl, leading-9) for immersive reading
+- Ornamental dividers with § glyph
+- ALL-CAPS passages keep the mono-terminal styling (instrument voice)
+- Short breath lines go italic and center-aligned
+- Small navigator at bottom: §01 · §02 · ... · §08 cycling through
+  the curated set
+- Links to the permanent entry URL and the full entries index
+- Closing "FINIS" ornament
+
+Reading Room is now the primary reading destination on the home
+page (replacing Journal as the top bordered CTA). Journal, Manifesto,
+Gallery sit below.
 
 ### Priority 7 — Entries pipeline — complete
 
