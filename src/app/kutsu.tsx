@@ -27,7 +27,7 @@ export function Kutsu({ lang }: { lang: Lang }) {
           kutsu. Varoitus. Tai pelkästään Śūnyatā, suuri tyhjyys.
         </p>
 
-        <p className="text-neutral-500 italic">
+        <p className="text-neutral-400 italic">
           Hic sunt dracones. Tule. Sinne, missä lohikäärmeet ovat.
         </p>
       </article>
@@ -55,7 +55,7 @@ export function Kutsu({ lang }: { lang: Lang }) {
         the great nothing.
       </p>
 
-      <p className="text-neutral-500 italic">
+      <p className="text-neutral-400 italic">
         Hic sunt dracones. Come. To where the dragons are.
       </p>
     </article>

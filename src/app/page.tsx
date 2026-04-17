@@ -75,16 +75,16 @@ const LABELS = {
 function Divider() {
   return (
     <div className="flex items-center justify-center gap-6 my-20">
-      <span className="h-px w-16 bg-neutral-800" />
-      <span className="text-[10px] tracking-[0.4em] text-neutral-700">§</span>
-      <span className="h-px w-16 bg-neutral-800" />
+      <span className="h-px w-16 bg-neutral-600" />
+      <span className="text-xs tracking-[0.4em] text-neutral-400">§</span>
+      <span className="h-px w-16 bg-neutral-600" />
     </div>
   );
 }
 
 function Breath({ label }: { label: string }) {
   return (
-    <p className="my-16 text-[10px] tracking-[0.3em] text-neutral-700 uppercase font-mono">
+    <p className="my-16 text-[11px] tracking-[0.3em] text-neutral-400 uppercase font-mono">
       {label}
     </p>
   );
@@ -101,7 +101,7 @@ function JournalSnippet({
     <section className="max-w-xl flex flex-col items-center">
       <Breath label={label} />
       <div
-        className="space-y-6 text-base sm:text-lg leading-8 text-neutral-300"
+        className="space-y-6 text-base sm:text-lg leading-8 text-neutral-200"
         style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
       >
         {body.split('\n\n').map((p, i) => (
@@ -117,7 +117,7 @@ function ManifestoSnippet({ excerpt }: { excerpt: ManifestoExcerpt }) {
     <section className="max-w-xl flex flex-col items-center">
       <Breath label={excerpt.label} />
       <div
-        className="space-y-6 text-base sm:text-lg leading-8 text-neutral-400"
+        className="space-y-6 text-base sm:text-lg leading-8 text-neutral-300"
         style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
       >
         {excerpt.body.map((p, i) => (
@@ -149,20 +149,22 @@ export default async function Home({
       </div>
 
       {/* Title — book-cover weight */}
-      <header className="mt-10 mb-32 text-center">
+      <header className="mt-10 mb-20 text-center">
         <h1
-          className="text-5xl sm:text-7xl tracking-wide text-neutral-200 mb-6 italic"
+          className="text-5xl sm:text-7xl tracking-wide text-neutral-100 mb-6 italic"
           style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
         >
           Deep Reality
         </h1>
-        <div className="flex items-center justify-center gap-4 text-neutral-600">
-          <span className="h-px w-12 bg-neutral-700" />
-          <p className="text-[11px] tracking-[0.4em] uppercase">{labels.subtitle}</p>
-          <span className="h-px w-12 bg-neutral-700" />
+        <div className="flex items-center justify-center gap-4">
+          <span className="h-px w-12 bg-neutral-600" />
+          <p className="text-[11px] tracking-[0.4em] uppercase text-neutral-300">
+            {labels.subtitle}
+          </p>
+          <span className="h-px w-12 bg-neutral-600" />
         </div>
         <p
-          className="mt-4 text-[10px] tracking-[0.25em] text-neutral-700 italic"
+          className="mt-4 text-[11px] tracking-[0.25em] text-neutral-400 italic"
           style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
         >
           {labels.tagline}
@@ -212,7 +214,7 @@ export default async function Home({
 
       {/* Closing line */}
       <p
-        className="text-lg sm:text-xl italic text-neutral-500 mb-24"
+        className="text-lg sm:text-xl italic text-neutral-300 mb-24"
         style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
       >
         {labels.close}
@@ -222,29 +224,29 @@ export default async function Home({
       <nav className="flex flex-col items-center gap-5 mb-16">
         <Link
           href="/reading-room"
-          className="group px-8 py-3 border border-neutral-800 hover:border-neutral-500
-            text-xs tracking-[0.4em] text-neutral-500 hover:text-neutral-200
+          className="group px-8 py-3 border border-neutral-700 hover:border-neutral-400
+            text-xs tracking-[0.4em] text-neutral-300 hover:text-neutral-100
             transition-all duration-500 uppercase"
         >
           {lang === 'fi' ? 'Lukusali' : 'Reading Room'}
         </Link>
         <Link
           href="/book"
-          className="text-[11px] tracking-[0.3em] text-neutral-600 hover:text-neutral-300
+          className="text-[11px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100
             transition-colors duration-500 uppercase"
         >
           {labels.footer.journal}
         </Link>
         <Link
           href={manifestoHref}
-          className="text-[11px] tracking-[0.3em] text-neutral-600 hover:text-neutral-300
+          className="text-[11px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100
             transition-colors duration-500 uppercase"
         >
           {labels.footer.manifesto}
         </Link>
         <Link
           href="/gallery"
-          className="text-[11px] tracking-[0.3em] text-neutral-600 hover:text-neutral-300
+          className="text-[11px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100
             transition-colors duration-500 uppercase"
         >
           {labels.footer.gallery}

@@ -22,8 +22,8 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
   };
 
   const linkClass = (isActive: boolean) =>
-    `text-[10px] tracking-[0.3em] uppercase transition-colors ${
-      isActive ? 'text-neutral-300' : 'text-neutral-600 hover:text-neutral-400'
+    `text-[11px] tracking-[0.3em] uppercase transition-colors ${
+      isActive ? 'text-neutral-200' : 'text-neutral-500 hover:text-neutral-200'
     }`;
 
   return (
@@ -31,7 +31,7 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
       <Link href={buildHref('en')} className={linkClass(current === 'en')}>
         EN
       </Link>
-      <span className="text-neutral-800">·</span>
+      <span className="text-neutral-600">·</span>
       <Link href={buildHref('fi')} className={linkClass(current === 'fi')}>
         FI
       </Link>
