@@ -119,7 +119,7 @@ export default async function EntryPage({
 
         <div
           className="space-y-6"
-          style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+          style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
         >
           {entry.body.split('\n\n').map((p, i) => renderParagraph(p, i))}
         </div>

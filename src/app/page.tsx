@@ -102,7 +102,7 @@ function JournalSnippet({
       <Breath label={label} />
       <div
         className="space-y-6 text-base sm:text-lg leading-8 text-neutral-200"
-        style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+        style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
       >
         {body.split('\n\n').map((p, i) => (
           <p key={i}>{p}</p>
@@ -118,7 +118,7 @@ function ManifestoSnippet({ excerpt }: { excerpt: ManifestoExcerpt }) {
       <Breath label={excerpt.label} />
       <div
         className="space-y-6 text-base sm:text-lg leading-8 text-neutral-300"
-        style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+        style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
       >
         {excerpt.body.map((p, i) => (
           <p key={i}>{p}</p>

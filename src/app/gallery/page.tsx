@@ -20,7 +20,7 @@ export default function GalleryPage() {
         >
           The Gallery
         </h1>
-        <p className="mt-3 text-[10px] tracking-[0.3em] text-neutral-600 uppercase">
+        <p className="mt-3 text-[10px] tracking-[0.3em] text-neutral-400 uppercase font-mono">
           Plates I–IX
         </p>
         <p
@@ -40,7 +40,7 @@ export default function GalleryPage() {
             <article key={img.src} className="flex flex-col items-center">
 
               {/* Plate label */}
-              <p className="text-[10px] tracking-[0.4em] text-neutral-600 uppercase mb-6">
+              <p className="text-[10px] tracking-[0.4em] text-neutral-400 uppercase mb-6 font-mono">
                 {img.plate}
               </p>
 
@@ -68,28 +68,28 @@ export default function GalleryPage() {
                   {img.title}
                 </h2>
                 <p
-                  className="text-base text-neutral-400 leading-7"
+                  className="text-base text-neutral-300 leading-7"
                   style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
                 >
                   {img.descriptor}
                 </p>
 
-                {/* Quote */}
+                {/* Quote — mono, the journal voice */}
                 <div className="pt-4">
                   <div className="flex items-center justify-center gap-4 mb-4">
-                    <span className="h-px w-8 bg-neutral-800" />
-                    <span className="text-[9px] tracking-[0.3em] text-neutral-700 uppercase">
+                    <span className="h-px w-8 bg-neutral-600" />
+                    <span className="text-[9px] tracking-[0.3em] text-neutral-400 uppercase font-mono">
                       paired entry
                     </span>
-                    <span className="h-px w-8 bg-neutral-800" />
+                    <span className="h-px w-8 bg-neutral-600" />
                   </div>
                   <blockquote
-                    className="text-base text-neutral-400 italic leading-7 px-6"
-                    style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+                    className="text-base text-neutral-300 leading-7 px-6 font-mono"
+                    style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
                   >
                     &ldquo;{img.quote}&rdquo;
                   </blockquote>
-                  <p className="mt-3 text-[10px] tracking-[0.25em] text-neutral-700 uppercase">
+                  <p className="mt-3 text-[10px] tracking-[0.25em] text-neutral-500 uppercase">
                     — {img.quoteSource}
                   </p>
                 </div>
@@ -101,10 +101,10 @@ export default function GalleryPage() {
 
       <footer className="mt-32 text-center space-y-4">
         <nav className="flex gap-8 justify-center">
-          <Link href="/book" className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400 transition-colors uppercase">
+          <Link href="/book" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
             The Journal
           </Link>
-          <Link href="/manifesto" className="text-[10px] tracking-[0.3em] text-neutral-700 hover:text-neutral-400 transition-colors uppercase">
+          <Link href="/manifesto" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
             Manifesto
           </Link>
         </nav>

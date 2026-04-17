@@ -92,10 +92,10 @@ export default function BookViewer({ entries }: BookViewerProps) {
               </p>
             )}
 
-            {/* Entry body — serif for the diary voice */}
+            {/* Entry body — monospace for the raw diary/instrument voice */}
             <div
               className="space-y-6"
-              style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+              style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
             >
               {entry.body.split('\n\n').map((paragraph, j) => {
                 const trimmed = paragraph.trim();
