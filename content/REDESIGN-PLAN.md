@@ -22,7 +22,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 3 | Demote the atlas viewer | ✓ | redesign(3) |
 | 4 | Gallery curation + captions | ✓ | redesign(4) |
 | 6 | Bilingual EN/FI toggle | ✓ | redesign(6) |
-| 1 | Continuous-scroll home page | ☐ | — |
+| 1 | Continuous-scroll home page | ✓ | redesign(1) |
 | 7 | Entries pipeline (`/entries/[slug]`) | ☐ | — |
 | 10 | Reading Room single-page experience | ☐ | — |
 | 9 | Renderer strategic direction (doc-only) | ☐ | — |
@@ -223,6 +223,29 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 1 — Continuous-scroll home page — complete
+
+Home page rewritten as a single continuous document:
+
+1. Language toggle (top-right)
+2. Hero title — EB Garamond italic, book-cover weight
+3. §I breath — "the invitation"
+4. Kutsu (bilingual)
+5. §II breath + featured journal entry (EN-only — the Pharmacist scene)
+6. Hero image — Plate I (the dark torn page) with caption
+7. §III breath + manifesto excerpt (bilingual — Cartography of Invisible Systems)
+8. §IV breath + featured journal entry (EN-only — "the void is not where meaning goes to die")
+9. Closing line — bilingual: "the thread does not break" / "lanka ei katkea"
+10. Quiet footer — three destinations (Journal, Manifesto, Gallery) — bilingual labels
+11. Final footer — I AM THE IMAGINATION OF MYSELF, author line
+
+Visitors now READ rather than NAVIGATE. Structure extracted into small
+components (`Divider`, `Breath`, `JournalSnippet`, `ManifestoSnippet`,
+`Kutsu`) for clarity and reuse.
+
+Journal entries stay English-only as designed ("the voice").
+Kutsu and manifesto excerpt switch with `?lang=fi`.
 
 ### Priority 6 — Bilingual EN/FI toggle — complete (infrastructure + manifesto)
 
