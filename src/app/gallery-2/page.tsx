@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { galleryImages } from './images';
 
-export default function GalleryPage() {
+export default function GalleryTwoPage() {
   return (
     <main className="min-h-screen px-6 py-16 flex flex-col items-center">
 
@@ -18,17 +18,18 @@ export default function GalleryPage() {
           className="mt-6 text-3xl sm:text-4xl text-neutral-200 italic"
           style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
         >
-          The Gallery
+          The Gallery · II
         </h1>
         <p className="mt-3 text-[10px] tracking-[0.3em] text-neutral-400 uppercase font-mono">
-          Plates I–IX
+          Pages VII – CCXVII
         </p>
         <p
           className="mt-6 max-w-xl text-sm text-neutral-500 italic leading-7"
           style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
         >
-          Pages from the atlas, paired with fragments of the journal that accompanies them.
-          The images are evidence; the text is what the evidence is evidence of.
+          A second walk through the atlas — sixteen pages, non-consecutive,
+          each a collision between the grid that catalogues and the thing that
+          refuses to be catalogued.
         </p>
       </header>
 
@@ -101,8 +102,8 @@ export default function GalleryPage() {
 
       <footer className="mt-32 text-center space-y-4">
         <nav className="flex gap-8 justify-center">
-          <Link href="/gallery-2" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
-            Gallery II
+          <Link href="/gallery" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
+            Gallery I
           </Link>
           <Link href="/book" className="text-[10px] tracking-[0.3em] text-neutral-400 hover:text-neutral-100 transition-colors uppercase">
             The Journal
