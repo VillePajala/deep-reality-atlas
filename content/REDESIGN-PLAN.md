@@ -20,7 +20,7 @@ Small/standalone edits first. Big structural change (#1) goes last, after the pi
 | 2 | Journal typography upgrade | ✓ | redesign(2) |
 | 5 | Title header confidence | ✓ | redesign(5) |
 | 3 | Demote the atlas viewer | ✓ | redesign(3) |
-| 4 | Gallery curation + captions | ☐ | — |
+| 4 | Gallery curation + captions | ✓ | redesign(4) |
 | 6 | Bilingual EN/FI toggle | ☐ | — |
 | 1 | Continuous-scroll home page | ☐ | — |
 | 7 | Entries pipeline (`/entries/[slug]`) | ☐ | — |
@@ -223,6 +223,18 @@ Each priority is a separate commit. If any one of them makes things worse, we ca
 ## Progress log
 
 Updates will be appended as priorities are completed.
+
+### Priority 4 — Gallery curation + captions — complete
+
+Gallery now presents nine curated plates (I–IX). Each plate has a
+title, an atlas-voice descriptor (1–2 sentences), and a paired quote
+from the Holy Book of Insanity with in-atlas attribution (e.g.
+"Journal — found folded inside page §217"). Structured data lives
+in `src/app/gallery/images.ts` as a typed catalogue.
+
+The gallery now reads as a designed catalogue rather than a dump of
+generator outputs. Image–text pairing principle from the roadmap is
+now applied retroactively.
 
 ### Priority 3 — Demote the atlas viewer — complete
 
