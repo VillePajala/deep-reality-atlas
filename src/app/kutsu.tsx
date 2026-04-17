@@ -28,7 +28,7 @@ export function Kutsu({ lang }: { lang: Lang }) {
         </p>
 
         <p className="text-neutral-400 italic">
-          Hic sunt dracones. Tule. Sinne, missä lohikäärmeet ovat.
+          Tyhjyys on opetellut nimesi. Tule.
         </p>
       </article>
     );
@@ -56,7 +56,7 @@ export function Kutsu({ lang }: { lang: Lang }) {
       </p>
 
       <p className="text-neutral-400 italic">
-        Hic sunt dracones. Come. To where the dragons are.
+        The void has been learning your name. Come.
       </p>
     </article>
   );

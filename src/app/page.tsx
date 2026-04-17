@@ -44,7 +44,7 @@ const HERO_IMAGE = {
 
 const LABELS = {
   en: {
-    subtitle: 'Tietoisuuden Kartografia',
+    subtitle: 'Cartography of Consciousness',
     tagline: 'an atlas of invisible systems',
     first: '§I — the invitation',
     entry1: FEATURED_ENTRY_1,
