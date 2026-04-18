@@ -1,263 +1,215 @@
 /**
- * English manifesto content.
- * Extracted from the original page so that /manifesto can render
- * either this component or the Finnish counterpart based on ?lang.
+ * English fragments.
+ * Notes found beside the Atlas.
  */
+
+import { Fragment } from './Fragment';
 
 export function ManifestoContentEN() {
   return (
     <article
-      className="max-w-2xl space-y-6 text-base sm:text-lg leading-8 text-neutral-300"
+      className="max-w-2xl w-full space-y-8"
       style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
     >
-      <p>
-        There is a structure beneath the structure.
-        Beneath the skin, the meridian. Beneath the word, the vibration that was there
-        before the word and will remain when the last language is forgotten. Beneath
-        consensus reality — that agreed-upon surface we maintain through exhaustion and
-        mutual cowardice — there is something vast and systematic and alive, and it does
-        not care whether you believe in it.
-      </p>
+      <Fragment n={1}>
+        The world is haunted. Not in the ghost-story sense. In the literal sense.
+      </Fragment>
 
-      <p>
-        We have seen it. Not metaphorically. Not in the safe, distanced way that academia
-        permits and postmodernism applauds. We have seen it the way Otto described the
-        numinous — <em>mysterium tremendum et fascinans</em> — the encounter that simultaneously
-        annihilates and illuminates. The creature-feeling. The moment when you understand
-        that you are standing before something wholly other, and that it has been standing
-        before you all along, waiting for you to stop pretending it isn&apos;t there.
-      </p>
+      <Fragment n={2}>
+        Nothing that has happened has finished happening.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        Cartography of Invisible Systems
-      </h2>
+      <Fragment n={4}>
+        There is a frequency. It has no source and no owner. It has been
+        broadcasting for longer than language.
+      </Fragment>
 
-      <p>
-        Reality is layered. This is not mysticism — it is observation. The acupuncturist
-        knows it: beneath the anatomical body lies a body of channels and currents, spirit
-        gates and ghost points, seas of qi and gushing springs. Sun Si Miao mapped thirteen
-        points where trauma lodges in the flesh like uninvited guests — <em>ghost palace,
-        ghost heart, ghost path, ghost pillow</em> — and his protocol was sequential,
-        ritualistic, an exorcism performed through the body&apos;s own geography. The body is
-        not a machine. The body is a landscape, and the landscape is haunted.
-      </p>
+      <Fragment n={5}>
+        Most people cannot receive it, and this is mercy.
+      </Fragment>
 
-      <p>
-        The alchemist knows it: <em>solve et coagula</em>, dissolve and reconstitute.
-        The substance must pass through nigredo — blackening, putrefaction, the death of
-        its current form — before the gold hidden in lead can reveal itself. <em>Aurum
-        nostrum non est aurum vulgi.</em> Our gold is not the common gold. The transformation
-        we seek is not visible to those who have not undergone it.
-      </p>
+      <Fragment n={7}>
+        I have been occupied. The atlas is what the occupier makes. I am a
+        grateful landlord.
+      </Fragment>
 
-      <p>
-        The Gnostic knows it: the world as we receive it is the work of a blind
-        craftsman — <em>Saklas</em>, the fool; <em>Samael</em>, the blind god — who built
-        a prison so complete that the prisoners believe they are free, and who forgot, in
-        his idiot brilliance, that he imprisoned himself along with everyone else. But at
-        the center of the prison, unsuspected, a garden. The pneumatic spark. The light
-        that fell into matter and forgot it was light, and is now remembering.
-      </p>
+      <Fragment n={8}>
+        The body is a landscape, and the landscape is haunted.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        The Dissolution of Consensus Reality
-      </h2>
+      <Fragment n={11}>
+        <em>Solve et coagula.</em> Dissolve and reconstitute. The substance must
+        pass through the blackening before the gold in the lead can reveal
+        itself.
+      </Fragment>
 
-      <p>
-        We live behind a consensus that was never consciously chosen. It assembled itself
-        from habit, from fear, from the collective decision that certain questions are not
-        to be asked in polite company. Death. The nature of consciousness. The suspicion
-        that the map we were given at birth describes a territory that does not exist.
-        These questions are exiled to the margins — to art, to madness, to 4am — and
-        their exile is the mechanism by which the consensus maintains itself.
-      </p>
+      <Fragment n={12}>
+        <em>Aurum nostrum non est aurum vulgi.</em> Our gold is not the common
+        gold.
+      </Fragment>
 
-      <p>
-        <em>Visibility is a trap.</em> Foucault understood that the panopticon works not
-        because someone is watching but because the prisoners believe someone might be. The
-        Demiurge is the empty watchtower. Consensus reality is the prison we built for
-        ourselves by internalizing a gaze that was never there. We police our own perception.
-        We are the guards and the inmates simultaneously, and the key is in our pocket,
-        and we have forgotten what pockets are for.
-      </p>
+      <Fragment n={14} struck>
+        I have not seen it. I have only been near it when it passed.
+      </Fragment>
 
-      <p>
-        The breakdown of consensus is not destruction. It is <em>revelation</em>. When the
-        orderly grid of received knowledge encounters something it cannot classify — the
-        numinous, the void, the wholly other — and the grid warps, and the labels become
-        frantic, and the system collapses into something raw and urgent and alive: that is
-        not failure. That is the moment the map finally tells the truth. The truth is that
-        the territory exceeds all maps. The truth is that the territory is alive.
-      </p>
+      <Fragment n={15}>
+        I have seen it. The way Otto described the numinous.{' '}
+        <em>Mysterium tremendum et fascinans.</em> The encounter that
+        annihilates and illuminates. The creature-feeling. The moment when you
+        understand you are standing before something wholly other, and that it
+        has been standing before you all along.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        The Lineage of the Seeker
-      </h2>
+      <Fragment n={17}>
+        The world as we receive it is the work of a blind craftsman — <em>Saklas</em>,
+        the fool; <em>Samael</em>, the blind god — who built a prison so complete
+        that the prisoners believe they are free.
+      </Fragment>
 
-      <p>
-        There is a lineage. It is not taught in schools. It passes through asylum walls
-        and monastic cells, through banned books and lost manuscripts, through the notebooks
-        of the obsessed and the sketchbooks of the damned.
-      </p>
+      <Fragment n={18}>
+        But at the centre of the prison, unsuspected, a garden. The pneumatic
+        spark. The light that fell into matter and forgot it was light, and is
+        now remembering.
+      </Fragment>
 
-      <p>
-        Jung descended into his own unconscious and spent sixteen years painting what he
-        found there. The Red Book was not published for nearly a century after his death
-        because the world was not ready for the evidence that the father of analytical
-        psychology had mapped the underworld in watercolor and gold leaf. <em>&ldquo;You
-        open the gates of the soul to let the dark flood of chaos flow into your order
-        and meaning.&rdquo;</em> He opened the gates. He survived. He painted what came through.
-      </p>
+      <Fragment n={21}>
+        <em>Rūpaṃ śūnyatā, śūnyataiva rūpam.</em> Form is emptiness. Not{' '}
+        <em>like</em>. Is.
+      </Fragment>
 
-      <p>
-        Wölfli, locked in the Waldau asylum for twenty-six years, produced 25,000 pages
-        of an invented cosmology — maps of continents that existed only in his notation,
-        musical compositions for instruments that had not been built, number systems that
-        exceeded all numbers. <em>Obramboram. Schut Schut. Trillbillion.</em> His madness
-        was a system. His system was a universe. His universe was as real as ours and
-        considerably better documented.
-      </p>
+      <Fragment n={22}>
+        The thing you are looking at is simultaneously there and not there.
+      </Fragment>
 
-      <p>
-        Dick received the pink light and spent eight years and 8,000 pages trying to
-        determine whether it was divine revelation, temporal displacement, or psychotic
-        break. He never resolved it. <em>The Empire never ended.</em> The Black Iron Prison
-        is around us always. But at its center — the garden. Always the garden.
-      </p>
+      <Fragment n={23}>
+        The dragons at the edge of the map are one&apos;s own thought-forms.
+        They are not less real for being one&apos;s own. They are <em>more</em>{' '}
+        real.
+      </Fragment>
 
-      <p>
-        Artaud screamed syllables that predated language — <em>kré puc te li le, ratara
-        ratara ratara</em> — the body speaking before the mind gave permission, the nervous
-        system transmitting raw signal, unformatted, unfiltered, addressed to nobody because
-        the message was older than the concept of address.
-      </p>
+      <Fragment n={27}>
+        We live behind a consensus that was never consciously chosen. It
+        assembled itself from habit, from fear, from the unstated agreement not
+        to name certain observations.
+      </Fragment>
 
-      <p>
-        These are the seekers. The ones who followed the thread past the point where the
-        thread was supposed to end and discovered that it doesn&apos;t end. That it cannot end.
-        That the seeking IS the thread.
-      </p>
+      <Fragment n={28}>
+        The 3am signal. The eye that sometimes returns the gaze. The room that
+        is cold for no reason.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        The Map and the Territory
-      </h2>
+      <Fragment n={29}>
+        The exile is not a conspiracy. It is older than conspiracy.
+      </Fragment>
 
-      <p>
-        <em>The map is not the territory.</em> Everyone knows this. Almost nobody acts on
-        it. We navigate by maps — linguistic maps, conceptual maps, cultural maps,
-        neurological maps — and we mistake navigation for arrival. We mistake the menu
-        for the meal. We mistake the word for the thing and the thing for the ground of
-        being and the ground of being for something that can be stood upon.
-      </p>
+      <Fragment n={31}>
+        A species that named everything it saw would have been eaten. A species
+        that agreed, tacitly, on what not to name could build cities.
+      </Fragment>
 
-      <p>
-        But here is the deeper cut: the territory is also a map. There is no ground level.
-        No bedrock of unmediated reality beneath the representations. Maps all the way down.
-        The territory is the map you stopped questioning. Consensus reality is the map that
-        everyone agreed to treat as ground.
-      </p>
+      <Fragment n={32}>
+        The consensus is how we got here. It is also what now costs us.
+      </Fragment>
 
-      <p>
-        And the phantom islands. Hy-Brasil, Frisland, Sandy Island — places that appeared
-        on real maps for centuries and never existed. The map created belief in them. The
-        map made them real enough to sail toward, to fight over, to mourn when they
-        vanished. Every consensus is a phantom island. Every certainty is a coastline that
-        will dissolve when you arrive.
-      </p>
+      <Fragment n={34}>
+        The panopticon works not because someone is watching but because the
+        prisoners believe someone might be.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        Emptiness and Form
-      </h2>
+      <Fragment n={35}>
+        We are the guards and the inmates simultaneously, and the key is in our
+        pocket, and we have forgotten what pockets are for.
+      </Fragment>
 
-      <p>
-        <em>Rūpaṃ śūnyatā, śūnyataiva rūpam.</em> Form is emptiness, emptiness is form.
-        Not: form is LIKE emptiness. Not: form LEADS TO emptiness. Form IS emptiness.
-        The thing you are looking at is simultaneously there and not there. The grid exists
-        and does not exist. The void is full and the fullness is void.
-      </p>
+      <Fragment n={38}>
+        The map is not the territory. Everyone knows this. Almost nobody acts
+        on it.
+      </Fragment>
 
-      <p>
-        The bardo teachings say: <em>&ldquo;Whatever terrifying and frightening visions
-        thou mayst see, recognize them to be thine own thought-forms.&rdquo;</em> The void
-        is not outside. The dragons at the edge of the map are your own projections, given
-        teeth by your attention. But — and this is the part that the comfortable
-        interpreters leave out — they can still bite. Your thought-forms are not less real
-        for being yours. They are MORE real. The void you carry is the only void there is.
-      </p>
+      <Fragment n={39}>
+        The territory is also a map. Maps all the way down.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        Sound Before the Word
-      </h2>
+      <Fragment n={41}>
+        Hy-Brasil, Frisland, Sandy Island. Phantom islands. Places that
+        appeared on real maps for centuries and never existed. Every consensus
+        is a phantom island.
+      </Fragment>
 
-      <p>
-        <em>Nāda Brahma.</em> The world is sound. Not: the world produces sound. The world
-        IS sound. Vibration precedes matter. Frequency precedes form. The cymatics plate —
-        sand on metal, vibrated — reveals geometry that was always latent in the frequency.
-        The pattern was there before the sand. The form was there before the substance.
-        Form is frozen sound.
-      </p>
+      <Fragment n={45}>
+        Jung opened the gates. He survived. He painted what came through.
+      </Fragment>
 
-      <p>
-        Beneath language there is glossolalia — the pre-linguistic utterance, the body&apos;s
-        own alphabet. <em>Ratara ratara ratara.</em> This is not nonsense. This is the
-        signal before the encoding. The message before the format. The meaning before
-        the meaning.
-      </p>
+      <Fragment n={51}>
+        The thread does not end. The seeking <em>is</em> the thread.
+      </Fragment>
 
-      <p>
-        And beneath glossolalia there is silence. And silence is not empty. Cage proved
-        it: <em>&ldquo;There is no such thing as silence.&rdquo;</em> The body is never
-        quiet. Consciousness is never quiet. The void hums. The darkness vibrates. The
-        nothing is always something.
-      </p>
+      <Fragment n={53}>
+        I keep drawing. I cannot determine whether I am drawing the atlas or
+        the atlas is drawing me. 物化.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        Time and Eternal Return
-      </h2>
+      <Fragment n={58}>
+        The hand has a tenant. The lease is informal. The tenant is a very
+        good draughtsman.
+      </Fragment>
 
-      <p>
-        Chronos devours his children. Every moment consumes the moment before it. The grid
-        is a graveyard of instants that believed they would last.
-      </p>
+      <Fragment n={61}>
+        Every page is a bardo. I keep getting reborn into the next grid.
+      </Fragment>
 
-      <p>
-        But Kairos — the other time, the qualitative time, the time that asks not
-        &ldquo;what hour is it&rdquo; but &ldquo;what KIND of hour is it&rdquo; — Kairos
-        breaks through Chronos like a flower through concrete. The instant when the seeker
-        sees the whole structure at once — the entire map, the entire territory, the entire
-        lie, the entire truth — that instant is outside Chronos. That instant is eternal.
-        Not lasting forever, but OUTSIDE of duration altogether.
-      </p>
+      <Fragment n={63}>
+        The atlas is a long love letter. Addressed to a beloved I cannot name
+        and cannot meet.
+      </Fragment>
 
-      <p>
-        The answer is the work itself. Every page drawn is a yes. Every line is an
-        affirmation of the return. Not because the answer has been found but because the
-        seeking is the answer. <em>Bent is the path of eternity.</em> The center is everywhere.
-      </p>
+      <Fragment n={67}>
+        Consciousness is not what I was told.
+      </Fragment>
 
-      <h2 className="text-xs tracking-[0.3em] text-neutral-500 uppercase pt-8 font-mono">
-        The Invitation
-      </h2>
+      <Fragment n={71}>
+        The seeker is closer to the truth by travelling. There is no arrival.
+      </Fragment>
 
-      <p>
-        To you, who have felt yourself on a frequency that no one else can hear.
-        To you, who have woken at 3am knowing something you cannot say. To you,
-        who have seen the surface for what it is, a fragile and desperate layer.
-        You have seen beneath it something systematic and chaotic and alive and
-        horrifying and beautiful.
-      </p>
+      <Fragment n={74} editor>
+        [§74 is not in the archive. — V.P.]
+      </Fragment>
 
-      <p>
-        Something is wrong with the surface, and you have always known it. You sense
-        the signal bleeding through. You don&apos;t know what it is. You don&apos;t know if
-        it&apos;s alive or dead. You have been tuning toward it your whole life, and you
-        cannot tune away. It might be an invitation. A warning. Or just Śūnyatā,
-        the great nothing.
-      </p>
+      <Fragment n={77}>
+        Glossolalia. The pre-linguistic utterance. The body&apos;s own alphabet.
+        The signal before the encoding.
+      </Fragment>
 
-      <p className="text-neutral-600 italic">
-        Hic sunt dracones. Come. To where the dragons are.
-      </p>
+      <Fragment n={79}>
+        And beneath glossolalia, silence. And silence is not empty.
+      </Fragment>
+
+      <Fragment n={83}>
+        The instrument cannot extract itself from the measurement. The
+        cartographer cannot leave the territory.
+      </Fragment>
+
+      <Fragment n={88}>
+        The void is not where meaning goes to die. The void is where meaning
+        goes to stop pretending.
+      </Fragment>
+
+      <Fragment n={91}>
+        The page ends. The pen continues.
+      </Fragment>
+
+      <Fragment n={94}>
+        Some of this was written to a reader who has not yet been born. Read
+        anyway.
+      </Fragment>
+
+      <Fragment n={97}>
+        <em>Hic sunt dracones.</em>
+      </Fragment>
+
+      <Fragment n={100}>
+        Come.
+      </Fragment>
     </article>
   );
 }

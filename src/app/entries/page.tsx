@@ -15,7 +15,7 @@ export default function EntriesIndexPage() {
       <header className="mb-16 text-center">
         <Link
           href="/"
-          className="text-xs tracking-[0.5em] text-neutral-600 hover:text-neutral-300
+          className="text-[11px] tracking-[0.5em] text-neutral-600 hover:text-neutral-300
             transition-colors uppercase"
         >
           Deep Reality

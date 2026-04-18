@@ -6,6 +6,35 @@ import {
   getEntryBySlug,
   getEntryNeighbours,
 } from '@/app/book/entries';
+import { Plate } from '@/app/gallery/Plate';
+
+/**
+ * Thematic pairings between specific journal entries and atlas plates.
+ * Match on entry.title. The paired plate renders inline above the entry body.
+ * Keys are exact title strings.
+ */
+const ENTRY_PLATE_PAIRS: Record<string, { src: string; caption: string }> = {
+  '3:22am': {
+    src: '/gallery/217-thinking-web.png',
+    caption: 'Page 217 — the thinking web',
+  },
+  '4:11am': {
+    src: '/gallery/094-thing-that-watched-back.png',
+    caption: 'Page 094 — the thing that watched back',
+  },
+  'on ego death': {
+    src: '/gallery/031-central-absence.png',
+    caption: 'Page 031 — the central absence',
+  },
+  'on the dead': {
+    src: '/gallery/143-eye-that-reads-back.png',
+    caption: 'Page 143 — the eye that reads back',
+  },
+  'entry — the wire in the wall': {
+    src: '/gallery/127-apparatus-breathing.png',
+    caption: 'Page 127 — the apparatus breathing',
+  },
+};
 
 export async function generateStaticParams() {
   const entries = getJournalEntries();
@@ -97,7 +126,7 @@ export default async function EntryPage({
       <header className="mb-16 text-center w-full max-w-2xl">
         <Link
           href="/"
-          className="text-xs tracking-[0.5em] text-neutral-600 hover:text-neutral-300
+          className="text-[11px] tracking-[0.5em] text-neutral-600 hover:text-neutral-300
             transition-colors uppercase"
         >
           Deep Reality
@@ -115,6 +144,19 @@ export default async function EntryPage({
           >
             {entry.title}
           </p>
+        )}
+
+        {/* Paired plate, when this entry has one */}
+        {ENTRY_PLATE_PAIRS[entry.title] && (
+          <figure className="mb-10">
+            <Plate
+              src={ENTRY_PLATE_PAIRS[entry.title].src}
+              alt={ENTRY_PLATE_PAIRS[entry.title].caption}
+            />
+            <figcaption className="mt-3 text-[10px] tracking-[0.3em] text-neutral-500 uppercase text-center font-mono">
+              {ENTRY_PLATE_PAIRS[entry.title].caption}
+            </figcaption>
+          </figure>
         )}
 
         <div

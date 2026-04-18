@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist_Mono, EB_Garamond } from "next/font/google";
+import { LangSync } from "@/components/LangSync";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -14,9 +16,30 @@ const ebGaramond = EB_Garamond({
   weight: ["400", "500", "600"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  title: "Deep Reality — Investigation into Deeper Realms",
-  description: "Tietoisuuden Kartografia. An atlas documenting invisible systems.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Deep Reality — Cartography of Consciousness",
+    template: "%s — Deep Reality",
+  },
+  description:
+    "Tietoisuuden Kartografia. Pages from the atlas of Johannes Kamikaze, found and presented by V.P.",
+  openGraph: {
+    title: "Deep Reality — Cartography of Consciousness",
+    description:
+      "Pages from the atlas of Johannes Kamikaze, found and presented by V.P.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deep Reality — Cartography of Consciousness",
+    description:
+      "Pages from the atlas of Johannes Kamikaze, found and presented by V.P.",
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistMono.variable} ${ebGaramond.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-neutral-300">
+        <Suspense fallback={null}>
+          <LangSync />
+        </Suspense>
         {children}
       </body>
     </html>

@@ -63,7 +63,7 @@ export default function BookViewer({ entries }: BookViewerProps) {
       <header className="mb-20 text-center">
         <Link
           href="/"
-          className="text-xs tracking-[0.5em] text-neutral-700 hover:text-neutral-400
+          className="text-[11px] tracking-[0.5em] text-neutral-600 hover:text-neutral-300
             transition-colors uppercase"
         >
           Deep Reality
@@ -72,9 +72,14 @@ export default function BookViewer({ entries }: BookViewerProps) {
 
       {/* Preamble — only on first page */}
       {page === 0 && (
-        <p className="text-[10px] tracking-[0.25em] text-neutral-700 text-center mb-16 max-w-lg">
-          Found documents. Undated unless marked. Pages unnumbered. Author unknown.
-        </p>
+        <div className="text-center mb-16 max-w-lg space-y-3">
+          <p className="text-[10px] tracking-[0.25em] text-neutral-700">
+            Found documents. Undated unless marked. Pages unnumbered. Attributed to Johannes Kamikaze.
+          </p>
+          <p className="text-[9px] tracking-[0.2em] text-neutral-800 italic font-mono">
+            The ordering is not mine. I have preserved what I could read. — V.P.
+          </p>
+        </div>
       )}
 
       {/* Top navigation */}

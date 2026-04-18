@@ -8,6 +8,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { cache } from 'react';
 
 export interface JournalEntry {
   slug: string;
@@ -28,7 +29,19 @@ function slugify(title: string, index: number): string {
   return `${String(index + 1).padStart(3, '0')}-${base}`;
 }
 
-export function getJournalEntries(): JournalEntry[] {
+/**
+ * Parse the journal markdown into entries.
+ * Wrapped with React's `cache()` for per-request memoisation, and
+ * additionally cached at module scope so multiple requests share the
+ * parse on the same server instance. The 484KB file is otherwise
+ * re-read/re-parsed on every call, which happens thousands of times
+ * during a static build of 358 entry routes.
+ */
+let moduleCache: JournalEntry[] | null = null;
+
+export const getJournalEntries = cache((): JournalEntry[] => {
+  if (moduleCache) return moduleCache;
+
   const filePath = path.join(process.cwd(), 'content', 'holy-book-of-insanity.md');
   const raw = fs.readFileSync(filePath, 'utf-8');
 
@@ -63,12 +76,19 @@ export function getJournalEntries(): JournalEntry[] {
     });
   });
 
+  moduleCache = entries;
   return entries;
-}
+});
 
 export function getEntryBySlug(slug: string): JournalEntry | null {
   const entries = getJournalEntries();
   return entries.find((e) => e.slug === slug) ?? null;
+}
+
+/** Lookup by exact title. Survives journal re-shufflings that change slugs. */
+export function getEntryByTitle(title: string): JournalEntry | null {
+  const entries = getJournalEntries();
+  return entries.find((e) => e.title === title) ?? null;
 }
 
 /** Return { prev, next } for navigation on a single-entry page. */

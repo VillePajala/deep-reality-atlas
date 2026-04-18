@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { LanguageToggle } from '@/components/LanguageToggle';
+import { Symbol } from '@/components/Symbol';
 import { ManifestoContentEN } from './content-en';
 import { ManifestoContentFI } from './content-fi';
 
@@ -14,23 +15,24 @@ export default async function ManifestoPage({
   const { lang: langParam } = await searchParams;
   const lang: Lang = langParam === 'fi' ? 'fi' : 'en';
 
-  const label = lang === 'fi' ? 'Manifesti' : 'Manifesto';
+  const label = lang === 'fi' ? 'Fragmentit — Atlaksen viereltä' : 'Fragments — Notes beside the Atlas';
 
   return (
     <main className="flex flex-col items-center min-h-screen px-6 py-16">
 
       {/* Header */}
-      <header className="mb-16 text-center relative w-full max-w-xl">
+      <header className="mb-16 flex flex-col items-center relative w-full max-w-xl">
         <Link
           href="/"
-          className="text-xs tracking-[0.5em] text-neutral-600 hover:text-neutral-300
+          className="text-[11px] tracking-[0.5em] text-neutral-600 hover:text-neutral-300
             transition-colors uppercase"
         >
           Deep Reality
         </Link>
-        <p className="text-[10px] tracking-[0.3em] text-neutral-700 mt-2 uppercase">
+        <p className="text-[10px] tracking-[0.3em] text-neutral-500 mt-2 uppercase">
           {label}
         </p>
+        <Symbol size={16} className="text-neutral-700 mt-6" />
         <div className="absolute top-0 right-0">
           <Suspense fallback={null}>
             <LanguageToggle />
@@ -42,12 +44,10 @@ export default async function ManifestoPage({
       {lang === 'fi' ? <ManifestoContentFI /> : <ManifestoContentEN />}
 
       {/* Footer */}
-      <footer className="mt-24 text-center">
+      <footer className="mt-24 flex flex-col items-center gap-3">
+        <Symbol size={18} className="text-neutral-800" />
         <p className="text-[9px] tracking-[0.3em] text-neutral-800">
           I AM THE IMAGINATION OF MYSELF
-        </p>
-        <p className="text-[8px] tracking-[0.2em] text-neutral-800 mt-2">
-          Ville Johannes Pajala — Helsinki, 2026
         </p>
       </footer>
     </main>

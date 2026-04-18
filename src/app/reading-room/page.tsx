@@ -11,30 +11,33 @@
  */
 
 import Link from 'next/link';
-import { getEntryBySlug } from '@/app/book/entries';
+import { getEntryByTitle } from '@/app/book/entries';
 
 /**
  * A small curated set of entries worth reading as standalone works.
- * Hand-picked — each entry can carry an entire page by itself.
+ * Keyed by title so re-shuffling the journal does not break the curation.
  */
-const READING_ROOM_SLUGS = [
-  '030-found-on-a-napkin',
-  '043-entry-the-ants',
-  '069-entry-the-patient',
-  '080-entry-the-cat',
-  '081-entry-language-is-a-grid',
-  '084-written-on-a-prescription-pad-old-from-the-clinic',
-  '088-entry-the-last-word',
-  '107-entry-autumn',
+const READING_ROOM_TITLES = [
+  'entry — the moth',
+  'on the bardos',
+  'the afternoon the bells',
+  'the morning I recognised',
+  'entry — two bodies',
+  'found folded — a list of praises',
+  'on the numinous, after Otto',
+  'the stranger on the train',
+  'entry — autumn',
+  '5:15am — haven\u2019t slept',
+  'found in a pocket, folded four times',
+  'last entry — or first — the pages aren\u2019t numbered',
 ] as const;
 
-function pickEntryForToday(): string {
-  // Deterministic: day of year picks the slug.
+function pickTitleForToday(): string {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
   const diff = now.getTime() - start.getTime();
   const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-  return READING_ROOM_SLUGS[dayOfYear % READING_ROOM_SLUGS.length];
+  return READING_ROOM_TITLES[dayOfYear % READING_ROOM_TITLES.length];
 }
 
 export const metadata = {
@@ -45,19 +48,18 @@ export const metadata = {
 export default async function ReadingRoomPage({
   searchParams,
 }: {
-  searchParams: Promise<{ slug?: string }>;
+  searchParams: Promise<{ slug?: string; title?: string }>;
 }) {
-  const { slug: requestedSlug } = await searchParams;
-  const slug = requestedSlug && READING_ROOM_SLUGS.includes(requestedSlug as typeof READING_ROOM_SLUGS[number])
-    ? requestedSlug
-    : pickEntryForToday();
+  const { title: requestedTitle } = await searchParams;
+  const title = requestedTitle && READING_ROOM_TITLES.includes(requestedTitle as typeof READING_ROOM_TITLES[number])
+    ? requestedTitle
+    : pickTitleForToday();
 
-  // Try the curated slug; if not found (content changes drift), fall back
-  // to the first available entry.
-  let entry = getEntryBySlug(slug);
+  // Try the curated title; if not found, fall through the list.
+  let entry = getEntryByTitle(title);
   if (!entry) {
-    for (const s of READING_ROOM_SLUGS) {
-      entry = getEntryBySlug(s);
+    for (const t of READING_ROOM_TITLES) {
+      entry = getEntryByTitle(t);
       if (entry) break;
     }
   }
@@ -102,7 +104,7 @@ export default async function ReadingRoomPage({
           <header className="flex items-center justify-between mb-16">
             <Link
               href="/"
-              className="text-[10px] tracking-[0.5em] text-neutral-600 hover:text-neutral-300
+              className="text-[11px] tracking-[0.5em] text-neutral-600 hover:text-neutral-300
                 transition-colors uppercase font-mono"
             >
               Deep Reality
@@ -191,7 +193,7 @@ export default async function ReadingRoomPage({
           {/* Footer with attribution */}
           <footer className="mt-16 flex items-center justify-between text-[9px] tracking-[0.3em] text-neutral-700 uppercase font-mono">
             <span>FIELD NOTES · DATE UNKNOWN</span>
-            <span>folio §{entry.index + 1} / {READING_ROOM_SLUGS.length}</span>
+            <span>folio §{entry.index + 1} / {READING_ROOM_TITLES.length}</span>
           </footer>
         </div>
       </div>
@@ -202,12 +204,12 @@ export default async function ReadingRoomPage({
           Another page from the reading room
         </p>
         <div className="flex items-center gap-4 flex-wrap justify-center">
-          {READING_ROOM_SLUGS.map((s, i) => (
+          {READING_ROOM_TITLES.map((t, i) => (
             <Link
-              key={s}
-              href={`/reading-room?slug=${s}`}
+              key={t}
+              href={`/reading-room?title=${encodeURIComponent(t)}`}
               className={`text-[10px] tracking-[0.3em] uppercase transition-colors ${
-                s === slug
+                t === title
                   ? 'text-neutral-300'
                   : 'text-neutral-700 hover:text-neutral-500'
               }`}
