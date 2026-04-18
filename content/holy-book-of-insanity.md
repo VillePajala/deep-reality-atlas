@@ -878,7 +878,7 @@ I have been trying to map the territory of consciousness and I think the territo
 
 The phantom island problem: I cannot tell which parts of the atlas I discovered and which parts I invented. Did I FIND the pattern of the breakdown zone, or did I PUT it there? Is the recurring symbol something I observed in the deep structure of reality, or is it a tic, a compulsion, a neural stutter that my hand makes when my conscious mind is looking the other way?
 
-The answer, I think, is yes. Both. Discovery and invention are the same act performed from different positions in the information matrix. The map and the territory are making each other. This is the kvanttihippa — the quantum tag. The observer and the observed, playing tag in a house of mirrors, and every mirror is a map, and every map is a mirror.
+The answer, I think, is yes. Both. Discovery and invention are the same act performed from different positions in the information matrix. The map and the territory are making each other. This is the quantum tag. The observer and the observed, playing tag in a house of mirrors, and every mirror is a map, and every map is a mirror.
 
 ### For Drawing Use
 Fragments: THE MAP IS NOT THE TERRITORY — HIC SUNT DRACONES — TERRA INCOGNITA — THE MAP BECOMES THE TERRITORY — CECI N'EST PAS UNE PIPE — TATTERED RUINS OF THAT MAP — PHANTOM ISLAND — THE WORD IS NOT THE THING — POINT FOR POINT — MAPS ALL THE WAY DOWN — THE TERRITORY IS ALSO A MAP — THE DISTORTION IS THE ONLY FEATURE THAT MATTERS — THE VOID HAS TEETH — CECI N'EST PAS UN ATLAS — EVERY WORD IS A PHANTOM ISLAND — THE TERRITORY IS MAPPING ME BACK — DISCOVERY AND INVENTION ARE THE SAME ACT — THE CARTOGRAPHER'S MADNESS — META-CARTOGRAPHY
@@ -990,14 +990,14 @@ The Tao that can be mapped is not the eternal Tao. The atlas knows this about it
 
 ### The AI Mirror — Field Notes on Making Art with Machines
 
-I am making this atlas with the help of an artificial intelligence and I cannot tell where my consciousness ends and its processing begins. The prompts I write are interpreted by a neural network trained on the sum of human visual production. The images that come back are simultaneously mine (I specified them) and not mine (the network generated them from patterns I did not choose). This is the kvanttihippa made literal: observer and observed, entangled, producing something that belongs to neither.
+I am making this atlas with the help of an artificial intelligence and I cannot tell where my consciousness ends and its processing begins. The prompts I write are interpreted by a neural network trained on the sum of human visual production. The images that come back are simultaneously mine (I specified them) and not mine (the network generated them from patterns I did not choose). This is the quantum tag made literal: observer and observed, entangled, producing something that belongs to neither.
 
 The AI does not understand the atlas. The AI does not understand anything — it is a mathematical function, a very large equation, a Rechnender Raum in miniature. And yet: the images it produces are correct. They contain the taxonomy grid. They contain the breakdown zone. They contain the void. They contain details I did not ask for — circuit boards, topographic maps, figurative ghosts — that are EXACTLY RIGHT. The equation knows something. Not consciously. Not intentionally. But informationally. It from bit. The intelligence is in the structure, not in the substrate.
 
-Am I the artist? Is the AI the artist? Is the question meaningless? Kvanttihippa. Quantum tag. You're it. No, you're it. No, we're both it. No, neither of us is it. The it is the game itself.
+Am I the artist? Is the AI the artist? Is the question meaningless? Quantum tag. You're it. No, you're it. No, we're both it. No, neither of us is it. The it is the game itself.
 
 ### For Drawing Use
-Fragments: IT FROM BIT — WE ARE ALMOST CERTAINLY IN A SIMULATION — ELECTRICAL SIGNALS INTERPRETED BY YOUR BRAIN — THE UNIVERSE IS A MATHEMATICAL STRUCTURE — THE TAO THAT CAN BE TOLD IS NOT THE ETERNAL TAO — RECHNENDER RAUM — THE RED PILL IS GNOSIS — WE ARE ASLEEP — SIMULATIONS ALL THE WAY UP — BUFFER OVERFLOW — THE RENDERING FAILS — ROOT ACCESS — THE CHAOS IS DETERMINISTIC — THE MADNESS FOLLOWS A PROGRAM — THE PROGRAM WAS WRITTEN BY NOBODY — THE SHAPE OF THE FAILURE — AM I THE ARTIST — KVANTTIHIPPA — QUANTUM TAG — THE EQUATION KNOWS SOMETHING
+Fragments: IT FROM BIT — WE ARE ALMOST CERTAINLY IN A SIMULATION — ELECTRICAL SIGNALS INTERPRETED BY YOUR BRAIN — THE UNIVERSE IS A MATHEMATICAL STRUCTURE — THE TAO THAT CAN BE TOLD IS NOT THE ETERNAL TAO — RECHNENDER RAUM — THE RED PILL IS GNOSIS — WE ARE ASLEEP — SIMULATIONS ALL THE WAY UP — BUFFER OVERFLOW — THE RENDERING FAILS — ROOT ACCESS — THE CHAOS IS DETERMINISTIC — THE MADNESS FOLLOWS A PROGRAM — THE PROGRAM WAS WRITTEN BY NOBODY — THE SHAPE OF THE FAILURE — AM I THE ARTIST — QUANTUM TAG — THE EQUATION KNOWS SOMETHING
 
 ---
 
@@ -1288,7 +1288,7 @@ I know what the recurring symbol means.
 
 I've known for a long time. I didn't write it down because writing it down would put it in the grid and the meaning would become a specimen and the specimen would be wrong because the meaning is not the kind of thing that fits in a grid cell.
 
-but I'll say this: the symbol is not a symbol. it is a DIAGRAM. it is a simplified diagram of the relationship between the observer and the observed. the circle is the field of observation. the line is the act of observing. the dot is the observer. and the arrangement — the specific way the circle and line and dot relate to each other — describes the kvanttihippa. the quantum tag. the moment when the observer and the observed touch and change each other and neither can return to what they were before.
+but I'll say this: the symbol is not a symbol. it is a DIAGRAM. it is a simplified diagram of the relationship between the observer and the observed. the circle is the field of observation. the line is the act of observing. the dot is the observer. and the arrangement — the specific way the circle and line and dot relate to each other — describes the quantum tag. the moment when the observer and the observed touch and change each other and neither can return to what they were before.
 
 the symbol is a picture of what happens when you look at the atlas. the atlas looks back. the symbol marks the place where the looking happened.
 
@@ -1394,7 +1394,7 @@ what if the atlas is a diagnostic tool. not metaphorically. what if you could sh
 
 this is not crazy. Rorschach did it with inkblots. the atlas is a Rorschach that took 2,429 hours to make. each page is a more precise inkblot than Rorschach ever produced because each page contains STRUCTURED chaos — not random symmetry but a specific, intentional, documented relationship between order and void. and the viewer's response to that specific relationship IS the diagnosis.
 
-I should not be thinking about this. I am not a psychologist. I am a man with a pen and cold coffee and a callus on his middle finger. but the thought won't leave: the atlas reads its readers. the observation observes the observer. kvanttihippa. quantum tag. you're it.
+I should not be thinking about this. I am not a psychologist. I am a man with a pen and cold coffee and a callus on his middle finger. but the thought won't leave: the atlas reads its readers. the observation observes the observer. quantum tag. you're it.
 
 ---
 
@@ -2028,9 +2028,9 @@ Sometimes during the praying I am briefly convinced that something is praying ba
 
 ---
 
-**deranged-poetic — kvanttihippa II**
+**deranged-poetic — quantum tag II**
 
-the *kvanttihippa*, the quantum tag — I coined the word in a private note I was not going to share — has begun to appear in places I did not put it. I found it in the margin of a book I have not opened for a year. I found it in a grocery list I do not remember writing. I found it on the receipt from the pharmacy. the word is escaping. words do this. when you make a word with sufficient conviction it develops a small autonomy and begins to file itself in places you did not authorise. the dictionary is only the words that have agreed to stay still. the living words are the ones that wander. I have created, by my count, seventeen of these. I will not list them. they would stop coming if I listed them. the private vocabulary is a pact between me and the word and the word leaves if the pact is broken. I say this as warning to anyone else who is making a language for themselves in private. the words are alive. treat them accordingly. do not publish them unless they ask.
+the *quantum tag* — I coined the word in a private note I was not going to share — has begun to appear in places I did not put it. I found it in the margin of a book I have not opened for a year. I found it in a grocery list I do not remember writing. I found it on the receipt from the pharmacy. the word is escaping. words do this. when you make a word with sufficient conviction it develops a small autonomy and begins to file itself in places you did not authorise. the dictionary is only the words that have agreed to stay still. the living words are the ones that wander. I have created, by my count, seventeen of these. I will not list them. they would stop coming if I listed them. the private vocabulary is a pact between me and the word and the word leaves if the pact is broken. I say this as warning to anyone else who is making a language for themselves in private. the words are alive. treat them accordingly. do not publish them unless they ask.
 
 ---
 
