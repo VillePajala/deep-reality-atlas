@@ -29,6 +29,7 @@ const LABELS = {
     nav: {
       finding: 'The Finding',
       atlas: 'The Atlas',
+      map: 'The Map',
       journal: 'The Journal',
       entries: 'Index',
       manifesto: 'Fragments',
@@ -55,6 +56,7 @@ const LABELS = {
     nav: {
       finding: 'Löytö',
       atlas: 'Atlas',
+      map: 'Kartta',
       journal: 'Päiväkirja',
       entries: 'Hakemisto',
       manifesto: 'Fragmentit',
@@ -184,6 +186,22 @@ export default async function Home({
           </Link>
           <span className="text-neutral-800">·</span>
           <Link
+            href="/map"
+            className="text-[10px] tracking-[0.3em] text-neutral-500 hover:text-neutral-200
+              transition-colors duration-500 uppercase"
+          >
+            {labels.nav.map}
+          </Link>
+          <span className="text-neutral-800">·</span>
+          <Link
+            href="/threads"
+            className="text-[10px] tracking-[0.3em] text-neutral-500 hover:text-neutral-200
+              transition-colors duration-500 uppercase"
+          >
+            {labels.nav.threads}
+          </Link>
+          <span className="text-neutral-800">·</span>
+          <Link
             href="/book"
             className="text-[10px] tracking-[0.3em] text-neutral-500 hover:text-neutral-200
               transition-colors duration-500 uppercase"
@@ -197,14 +215,6 @@ export default async function Home({
               transition-colors duration-500 uppercase"
           >
             {labels.nav.entries}
-          </Link>
-          <span className="text-neutral-800">·</span>
-          <Link
-            href="/threads"
-            className="text-[10px] tracking-[0.3em] text-neutral-500 hover:text-neutral-200
-              transition-colors duration-500 uppercase"
-          >
-            {labels.nav.threads}
           </Link>
           <span className="text-neutral-800">·</span>
           <Link
