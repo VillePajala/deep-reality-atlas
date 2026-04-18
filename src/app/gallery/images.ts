@@ -19,6 +19,7 @@ export interface GalleryImage {
   quote: string;              // paired journal fragment in Kamikaze's voice
   quoteSource: string;        // honest archive attribution
   pairedEntryTitle?: string;  // if present, gallery renders a link to /entries/[slug]
+  relatedThreadSlug?: string; // if present, gallery renders a link to /threads/[slug]
 }
 
 export const galleryImages: GalleryImage[] = [
@@ -31,6 +32,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'I drew the grid to keep the thing inside it. The thing grew tendrils. The grid is now a skin the tendrils wear.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-tenant',
   },
   {
     src: '/gallery/008-foam-index.png',
@@ -41,6 +43,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'Every classification system is a promise we make to the mess. The mess does not sign the contract.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-second-body',
   },
   {
     src: '/gallery/012-glyph-that-grew-a-body.png',
@@ -51,6 +54,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'The sign was supposed to point at the thing. Now the sign IS the thing and points at me.',
     quoteSource: 'Journal — a 3am entry',
+    relatedThreadSlug: 'the-symbol',
   },
   {
     src: '/gallery/029-ink-tide.png',
@@ -61,6 +65,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'The flood does not read the labels. The flood does not recognise our definitions. The flood arrives and the definitions float.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-void',
   },
   {
     src: '/gallery/031-central-absence.png',
@@ -72,6 +77,7 @@ export const galleryImages: GalleryImage[] = [
       'You cannot draw the hole. You can only draw the things that stop at its edge.',
     quoteSource: 'Journal — a single line, undated',
     pairedEntryTitle: 'on ego death',
+    relatedThreadSlug: 'the-void',
   },
   {
     src: '/gallery/047-inventory-of-the-site.png',
@@ -82,6 +88,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'I have been cataloguing for weeks. Last night I realised the specimens are cataloguing me.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-clinic',
   },
   {
     src: '/gallery/063-downpour.png',
@@ -92,6 +99,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'The numbers were accurate when I wrote them. Now the numbers are wet and the accuracy is somewhere downstream.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-void',
   },
   {
     src: '/gallery/071-cellular-coast.png',
@@ -102,6 +110,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'The surface is a coastline. On one side you can still count the squares. On the other side counting stops being useful.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-void',
   },
   {
     src: '/gallery/088-wall-of-the-archive.png',
@@ -112,6 +121,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'The archive is not a building. The archive is a weight. It is standing on something that is still alive.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'editor',
   },
   {
     src: '/gallery/094-thing-that-watched-back.png',
@@ -123,6 +133,7 @@ export const galleryImages: GalleryImage[] = [
       'I watched it on the page for an hour. At the end of the hour I understood I had been watched back for an hour.',
     quoteSource: 'Journal — 4:11am',
     pairedEntryTitle: '4:11am',
+    relatedThreadSlug: 'hauntings',
   },
   {
     src: '/gallery/101-void-has-a-body.png',
@@ -133,6 +144,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'It turns out the void is not a thing we fall into. The void is a thing that has been slowly building itself next to us.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-void',
   },
   {
     src: '/gallery/119-cell-atlas.png',
@@ -143,6 +155,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'I catalogued the first hundred. Then the first thousand. At ten thousand I stopped counting and started praying.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: 'the-second-body',
   },
   {
     src: '/gallery/127-apparatus-breathing.png',
@@ -154,6 +167,7 @@ export const galleryImages: GalleryImage[] = [
       'The machine is breathing. I will not write the word "alive". I will write the word "breathing".',
     quoteSource: 'Journal — the wire in the wall',
     pairedEntryTitle: 'entry — the wire in the wall',
+    relatedThreadSlug: 'the-tenant',
   },
   {
     src: '/gallery/142-column-that-became-weather.png',
@@ -164,6 +178,7 @@ export const galleryImages: GalleryImage[] = [
     quote:
       'Every column of numbers is a description of weather. We had forgotten. The weather has not forgotten.',
     quoteSource: 'Journal — undated',
+    relatedThreadSlug: '3am',
   },
   {
     src: '/gallery/143-eye-that-reads-back.png',
@@ -175,6 +190,7 @@ export const galleryImages: GalleryImage[] = [
       'The document is reading me while I read it. Neither of us can stop. Neither of us is in charge.',
     quoteSource: 'Journal — on the dead',
     pairedEntryTitle: 'on the dead',
+    relatedThreadSlug: 'mirrors',
   },
   {
     src: '/gallery/217-thinking-web.png',
@@ -186,5 +202,6 @@ export const galleryImages: GalleryImage[] = [
       'A thought is a shape. A long thought is a web. A very long thought is what you are looking at, and it is looking at you.',
     quoteSource: 'Journal — 3:22am',
     pairedEntryTitle: '3:22am',
+    relatedThreadSlug: 'dreams',
   },
 ];

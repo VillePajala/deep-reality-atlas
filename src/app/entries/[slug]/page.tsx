@@ -7,6 +7,7 @@ import {
   getEntryNeighbours,
 } from '@/app/book/entries';
 import { Plate } from '@/app/gallery/Plate';
+import { getRelatedEntries } from '@/app/threads/threads';
 
 /**
  * Thematic pairings between specific journal entries and atlas plates.
@@ -167,8 +168,39 @@ export default async function EntryPage({
         </div>
       </article>
 
+      {/* Related entries — thematic siblings in the archive */}
+      {(() => {
+        const related = getRelatedEntries(entry, 3);
+        if (related.length === 0) return null;
+        return (
+          <section className="mt-24 w-full max-w-2xl">
+            <p className="text-[10px] tracking-[0.3em] text-neutral-600 uppercase font-mono mb-4 text-center">
+              nearby in the archive
+            </p>
+            <ul className="space-y-2 font-mono">
+              {related.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`/entries/${r.slug}`}
+                    className="group flex items-baseline gap-4 py-2 px-3 border-b border-neutral-900
+                      hover:border-neutral-700 transition-colors"
+                  >
+                    <span className="text-[10px] tracking-[0.2em] text-neutral-700 w-10 shrink-0 tabular-nums">
+                      §{String(r.index + 1).padStart(3, '0')}
+                    </span>
+                    <span className="text-sm text-neutral-500 group-hover:text-neutral-200 transition-colors">
+                      {r.title || <em className="text-neutral-700">(untitled)</em>}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })()}
+
       {/* Neighbour navigation */}
-      <nav className="mt-24 w-full max-w-2xl flex items-stretch justify-between gap-4 font-mono">
+      <nav className="mt-16 w-full max-w-2xl flex items-stretch justify-between gap-4 font-mono">
         {prev ? (
           <Link
             href={`/entries/${prev.slug}`}

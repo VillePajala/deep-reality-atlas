@@ -3,6 +3,7 @@ import { galleryImages } from './images';
 import { Plate } from './Plate';
 import { Symbol } from '@/components/Symbol';
 import { getEntryByTitle } from '@/app/book/entries';
+import { getThreadBySlug } from '@/app/threads/threads';
 
 export default function GalleryPage() {
   return (
@@ -44,6 +45,9 @@ export default function GalleryPage() {
           {galleryImages.map((img, i) => {
             const pairedEntry = img.pairedEntryTitle
               ? getEntryByTitle(img.pairedEntryTitle)
+              : null;
+            const relatedThread = img.relatedThreadSlug
+              ? getThreadBySlug(img.relatedThreadSlug)
               : null;
 
             return (
@@ -99,6 +103,18 @@ export default function GalleryPage() {
                         img.quoteSource
                       )}
                     </p>
+
+                    {relatedThread && (
+                      <p className="mt-4 text-[9px] tracking-[0.3em] text-neutral-600 uppercase font-mono">
+                        thread:{' '}
+                        <Link
+                          href={`/threads/${relatedThread.slug}`}
+                          className="underline decoration-dotted underline-offset-4 hover:text-neutral-300 transition-colors"
+                        >
+                          {relatedThread.title}
+                        </Link>
+                      </p>
+                    )}
                   </div>
                 </div>
               </article>
