@@ -106,6 +106,18 @@ export const THREADS: Thread[] = [
       'The imaginal realm \u2014 neither out-there nor in-here. Entries where Kamikaze describes meeting figures that are neither hallucination nor external. — V.P.',
     keywords: ['third country', 'third light', 'imaginal', 'mundus imaginalis', 'third state', 'third hand'],
   },
+  {
+    slug: 'meditations',
+    title: 'Meditations',
+    editorNote:
+      'The essayistic entries — where Kamikaze steps back and thinks about something in a calmer register. Most begin "on X". Not madness but its examination. — V.P.',
+    keywords: [
+      'consciousness', 'observer', 'observation', 'observed', 'perception', 'attention',
+      'the instrument', 'apophatic', 'numinous', 'consensus', 'synaesthesia', 'synchronicity',
+      'on the ', 'on a ', 'phenomenology', 'epistemology', 'the numinous', 'the measurement',
+      'the map is not', 'knowing', 'measurement',
+    ],
+  },
 ];
 
 export function getThreadBySlug(slug: string): Thread | null {

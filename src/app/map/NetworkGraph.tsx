@@ -27,28 +27,31 @@ interface NetworkGraphProps {
 }
 
 const COLORS = {
-  // Restrained neutral palette so the graph reads as archival, not decorative.
-  thread: '#e5e5e5',        // brightest
-  plate: '#a3a3a3',         // medium
-  entry: '#525252',          // quiet
-  edge: 'rgba(160,160,160,0.08)', // very faint
+  thread: '#e5e5e5',
+  plate: '#a3a3a3',
+  entry: '#525252',
+  edge: 'rgba(160,160,160,0.08)',
   hover: '#fafafa',
   hoverEdge: 'rgba(210,210,210,0.4)',
 };
 
 const RADIUS = {
-  thread: 5.5,
-  plate: 3.2,
-  entry: 1.4,
+  thread: 6.5,
+  plate: 3.6,
+  entry: 1.6,
 };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type FGRef = any;
 
 export function NetworkGraph({ data }: NetworkGraphProps) {
   const router = useRouter();
+  const fgRef = useRef<FGRef>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
   const [hoverId, setHoverId] = useState<string | null>(null);
 
-  // Track container size for responsive layout
+  // Track container size
   useEffect(() => {
     if (!containerRef.current) return;
     const el = containerRef.current;
@@ -59,8 +62,7 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
     return () => ro.disconnect();
   }, []);
 
-  // Build a lookup of neighbour ids so we can highlight a node's thread
-  // connections on hover.
+  // Neighbour lookup for hover highlighting
   const neighboursRef = useRef<Map<string, Set<string>>>(new Map());
   useEffect(() => {
     const m = new Map<string, Set<string>>();
@@ -75,6 +77,20 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
     neighboursRef.current = m;
   }, [data]);
 
+  // Tune physics after engine initialises:
+  //   - stronger repulsion so entries don't pile into a ball
+  //   - longer link distance so thread clusters breathe
+  //   - gentle centering so orphans (entries in zero threads) stay in frame
+  useEffect(() => {
+    if (!fgRef.current || !dims) return;
+    const fg = fgRef.current;
+    fg.d3Force('charge')?.strength(-28).distanceMax(260);
+    fg.d3Force('link')?.distance(36).strength(0.8);
+    // centre pulls everything softly toward the origin so orphans settle
+    const centerForce = fg.d3Force('center');
+    if (centerForce) centerForce.strength(0.05);
+  }, [dims, data]);
+
   const handleNodeClick = useCallback(
     (raw: object) => {
       const node = raw as NodeInternal;
@@ -83,7 +99,6 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
     [router],
   );
 
-  // Custom draw: circle + label for threads; smaller dots for entries/plates.
   const drawNode = useCallback(
     (raw: object, ctx: CanvasRenderingContext2D, globalScale: number) => {
       const node = raw as NodeInternal;
@@ -95,12 +110,11 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
       const dim = hoverId != null && !isHover && !isNeighbour;
 
       const baseColor = COLORS[node.kind];
-      const color = isHover ? COLORS.hover : dim ? `${baseColor}40` : baseColor;
+      const color = isHover ? COLORS.hover : dim ? `${baseColor}35` : baseColor;
       const r = RADIUS[node.kind];
 
       ctx.beginPath();
       if (node.kind === 'plate') {
-        // Square for plates — distinct shape
         const s = r * 1.8;
         ctx.rect(node.x - s / 2, node.y - s / 2, s, s);
       } else {
@@ -109,14 +123,32 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
       ctx.fillStyle = color;
       ctx.fill();
 
-      // Thread nodes always show a label; hovered node shows its label too.
-      if (node.kind === 'thread' || isHover) {
-        const fontSize = node.kind === 'thread' ? 11 / globalScale : 10 / globalScale;
+      // Thread nodes always label; hover shows any node's label above it
+      if (node.kind === 'thread') {
+        const fontSize = 11 / globalScale;
         ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, monospace`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillStyle = isHover ? COLORS.hover : '#d4d4d4';
-        ctx.fillText(node.label, node.x, node.y + r + fontSize * 0.9);
+        ctx.fillStyle = isHover ? COLORS.hover : dim ? '#737373' : '#d4d4d4';
+        // alternate label offset by node id hash to reduce label collisions
+        const hashOffset = (node.id.charCodeAt(node.id.length - 1) % 2) === 0 ? 1 : -1;
+        const offset = r + fontSize * 0.9;
+        ctx.fillText(node.label, node.x, node.y + hashOffset * offset);
+      } else if (isHover) {
+        const fontSize = 10 / globalScale;
+        ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        // label pill background
+        const padX = 4 / globalScale;
+        const padY = 2 / globalScale;
+        const metrics = ctx.measureText(node.label);
+        const w = metrics.width + padX * 2;
+        const h = fontSize + padY * 2;
+        ctx.fillStyle = 'rgba(10,10,10,0.9)';
+        ctx.fillRect(node.x - w / 2, node.y - r - h - 2 / globalScale, w, h);
+        ctx.fillStyle = COLORS.hover;
+        ctx.fillText(node.label, node.x, node.y - r - h / 2 - 2 / globalScale);
       }
     },
     [hoverId],
@@ -128,10 +160,16 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
       const a = typeof l.source === 'string' ? l.source : l.source.id;
       const b = typeof l.target === 'string' ? l.target : l.target.id;
       if (hoverId != null && (a === hoverId || b === hoverId)) return COLORS.hoverEdge;
+      if (hoverId != null) return 'rgba(160,160,160,0.03)'; // dim non-connected edges
       return COLORS.edge;
     },
     [hoverId],
   );
+
+  const handleEngineStop = useCallback(() => {
+    if (!fgRef.current) return;
+    fgRef.current.zoomToFit(600, 80);
+  }, []);
 
   return (
     <div
@@ -141,6 +179,7 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
     >
       {dims && (
         <ForceGraph2D
+          ref={fgRef}
           graphData={data}
           width={dims.w}
           height={dims.h}
@@ -159,29 +198,34 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
           linkWidth={0.4}
           onNodeHover={(n) => setHoverId((n as NodeInternal | null)?.id ?? null)}
           onNodeClick={handleNodeClick}
-          cooldownTicks={200}
-          d3VelocityDecay={0.35}
-          d3AlphaDecay={0.015}
+          onEngineStop={handleEngineStop}
+          cooldownTicks={300}
+          d3VelocityDecay={0.4}
+          d3AlphaDecay={0.02}
+          warmupTicks={60}
           enableNodeDrag={false}
-          warmupTicks={30}
-          minZoom={0.3}
-          maxZoom={6}
+          minZoom={0.2}
+          maxZoom={8}
         />
       )}
-      {/* Legend — top-right, quiet */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2 text-[9px] tracking-[0.3em] uppercase font-mono text-neutral-500 bg-[#0a0a0a]/60 backdrop-blur-sm px-3 py-2 border border-neutral-900">
+      {/* Legend */}
+      <div className="absolute top-4 right-4 flex flex-col gap-2 text-[9px] tracking-[0.3em] uppercase font-mono text-neutral-500 bg-[#0a0a0a]/70 backdrop-blur-sm px-3 py-2 border border-neutral-900">
         <div className="flex items-center gap-2">
           <span className="inline-block w-3 h-3 rounded-full" style={{ background: COLORS.thread }} />
-          threads (13)
+          threads ({data.nodes.filter((n) => n.kind === 'thread').length})
         </div>
         <div className="flex items-center gap-2">
           <span className="inline-block w-[9px] h-[9px]" style={{ background: COLORS.plate }} />
-          plates (16)
+          plates ({data.nodes.filter((n) => n.kind === 'plate').length})
         </div>
         <div className="flex items-center gap-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: COLORS.entry }} />
           entries ({data.nodes.filter((n) => n.kind === 'entry').length})
         </div>
+      </div>
+      {/* Hint */}
+      <div className="absolute bottom-4 left-4 text-[9px] tracking-[0.3em] uppercase font-mono text-neutral-700">
+        scroll to zoom · drag to pan
       </div>
     </div>
   );
