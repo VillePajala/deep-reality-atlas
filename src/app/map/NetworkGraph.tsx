@@ -78,17 +78,27 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
   }, [data]);
 
   // Tune physics after engine initialises:
-  //   - stronger repulsion so entries don't pile into a ball
-  //   - longer link distance so thread clusters breathe
-  //   - gentle centering so orphans (entries in zero threads) stay in frame
+  //   - stronger repulsion so dense clusters breathe
+  //   - shorter link on entry→thread so entries stay close to their hub
+  //   - longer link between thread hubs (via lower link strength
+  //     balancing charge) so hubs separate across the viewport
   useEffect(() => {
     if (!fgRef.current || !dims) return;
     const fg = fgRef.current;
-    fg.d3Force('charge')?.strength(-28).distanceMax(260);
-    fg.d3Force('link')?.distance(36).strength(0.8);
-    // centre pulls everything softly toward the origin so orphans settle
+    // stronger repulsion overall; no distanceMax so hubs can push far apart
+    fg.d3Force('charge')?.strength(-80);
+    // shorter links keep entries close to their thread hub
+    fg.d3Force('link')?.distance((link: { source: NodeInternal; target: NodeInternal }) => {
+      const s = typeof link.source === 'object' ? link.source.kind : 'entry';
+      const t = typeof link.target === 'object' ? link.target.kind : 'thread';
+      // thread↔plate → medium, entry↔thread → short, plate↔entry → medium
+      if (s === 'thread' && t === 'thread') return 220;
+      if (s === 'entry' || t === 'entry') return 28;
+      return 60;
+    });
+    // centre force pulls orphan-groups back toward middle
     const centerForce = fg.d3Force('center');
-    if (centerForce) centerForce.strength(0.05);
+    if (centerForce) centerForce.strength(0.03);
   }, [dims, data]);
 
   const handleNodeClick = useCallback(
@@ -170,6 +180,19 @@ export function NetworkGraph({ data }: NetworkGraphProps) {
     if (!fgRef.current) return;
     fgRef.current.zoomToFit(600, 80);
   }, []);
+
+  // Fit the graph to the viewport once nodes have initial positions.
+  // zoomToFit on engine-stop handles the final settle; this one handles
+  // the first-render tiny-graph flash.
+  useEffect(() => {
+    if (!fgRef.current || !dims) return;
+    const t1 = setTimeout(() => fgRef.current?.zoomToFit(400, 80), 200);
+    const t2 = setTimeout(() => fgRef.current?.zoomToFit(400, 80), 1000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [dims]);
 
   return (
     <div

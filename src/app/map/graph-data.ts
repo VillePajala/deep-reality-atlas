@@ -72,14 +72,16 @@ export function buildGraphData(): GraphData {
     });
   }
 
+  // Track which entries got at least one edge.
+  const entryHasEdge = new Set<string>();
+
   // 4. Entry → thread edges
   for (const thread of THREADS) {
     const threadEntries = getEntriesForThread(thread.slug);
     for (const entry of threadEntries) {
-      links.push({
-        source: `entry:${entry.slug}`,
-        target: `thread:${thread.slug}`,
-      });
+      const id = `entry:${entry.slug}`;
+      links.push({ source: id, target: `thread:${thread.slug}` });
+      entryHasEdge.add(id);
     }
   }
 
@@ -98,11 +100,21 @@ export function buildGraphData(): GraphData {
     if (plate.pairedEntryTitle) {
       const entry = entries.find((e) => e.title === plate.pairedEntryTitle);
       if (entry) {
-        links.push({
-          source: `plate:${plate.src}`,
-          target: `entry:${entry.slug}`,
-        });
+        const id = `entry:${entry.slug}`;
+        links.push({ source: `plate:${plate.src}`, target: id });
+        entryHasEdge.add(id);
       }
+    }
+  }
+
+  // 7. Fallback — any entry with no edges at all gets pulled toward
+  //    the meditations hub so the force simulation can keep it in frame.
+  //    This is a purely visual gravity; the entry doesn't actually appear
+  //    on the Meditations thread page (its keywords are what matter there).
+  for (const entry of entries) {
+    const id = `entry:${entry.slug}`;
+    if (!entryHasEdge.has(id)) {
+      links.push({ source: id, target: 'thread:meditations' });
     }
   }
 
